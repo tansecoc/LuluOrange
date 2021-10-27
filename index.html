@@ -25,7 +25,14 @@
     height: 100%;
     overflow: auto;
   }
-  
+
+  .sidebar h2 {
+    display: block;
+    color: rgb(250, 250, 250);
+    padding: 16px;
+    text-decoration: none;
+  }
+
   .sidebar a {
     display: block;
     color: rgb(250, 250, 250);
@@ -45,7 +52,7 @@
   
   div.content {
     margin-left: 220px;
-    padding: 1px 16px;
+    padding: 15px 16px;
     height: 1000px;
   }
   
@@ -97,7 +104,9 @@
 <body>
 
 <div class="sidebar">
+  <h2>LuluOrange</h2>
   <a href="#">Sales Overview</a>
+  <a href="#">Sales Details</a>
   <a href="activities_manage.html">Manage Activities</a>
   <a href="customers_manage.html">Manage Customers</a>
   <a href="genders_manage.html">Manage Genders</a>
@@ -105,12 +114,11 @@
   <a href="orders_products_manage.html">Manage Orders_Products</a>
   <a href="products_manage.html">Manage Products</a>
   <a href="stores_manage.html">Manage Stores</a>
-  <a href="#">Sales Details</a>
 </div>
 
 <div class="container-fluid">
   <div class="content">
-  <h1>Sales Overview</h1>
+    <h2>Sales Overview</h2>
     <p>A database driven website will record Orders of Products to Customers from all store locations and the detailed information of Products and Stores.  The internal website will be used by LuluOrange’s Sales and Business Intelligence team to create, update and remove records of products, stores and sales. It will also help the sales team to understand which are the best/worst selling products overall, product sales by region, store performance, product popularity by activity and/or gender, and many other key business insights.
   </p>
     <h2>Sales by Activities</h2>
