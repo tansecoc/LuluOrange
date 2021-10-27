@@ -11,6 +11,8 @@
 <body>
     <div class="container-fluid">
         <h1>Manage Orders</h1>
+        <br>
+        <h2>Orders List</h2>
         <table class="table">
             <thead>
                 <tr>
@@ -38,6 +40,30 @@
                 </tr>
             </tbody>
         </table>
+        <br>
+        <h2>Add Order</h2>
+        <form>
+            <div class="form-group">
+                <label for="order_id">order_id</label>
+                <input type="number" class="form-control" id="order_id">
+            </div>
+            <div class="form-group">
+                <label for="customer_id">customer_id</label>
+                <input type="number" class="form-control" id="customer_id">
+            </div>
+            <div class="form-group">
+                <label for="store_id">store_id</label>
+                <input type="number" class="form-control" id="store_id">
+            </div>
+            <div class="form-group">
+                <label for="order_date">order_date</label>
+                <input type="date" class="form-control" id="order_date">
+            </div>
+            <br>
+            <div>
+                <button type="submit" class="btn btn-primary">Add Order</button>
+            </div>
+        </form>
     </div>
 
     <!-- JavaScript Bundle with Popper -->

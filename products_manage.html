@@ -11,6 +11,8 @@
 <body>
     <div class="container-fluid">
         <h1>Manage Products</h1>
+        <br>
+        <h2>Products List</h2>
         <table class="table">
             <thead>
                 <tr>
@@ -53,6 +55,34 @@
                 </tr>
             </tbody>
         </table>
+        <br>
+        <h2>Add Product</h2>
+        <form>
+            <div class="form-group">
+                <label for="product_name">product_name</label>
+                <input type="text" class="form-control" id="product_name">
+            </div>
+            <div class="form-group">
+                <label for="product_description">product_description</label>
+                <input type="text" class="form-control" id="product_description">
+            </div>
+            <div class="form-group">
+                <label for="gender_id">gender_id</label>
+                <input type="text" class="form-control" id="gender_id">
+            </div>
+            <div class="form-group">
+                <label for="activity_id">activity_id</label>
+                <input type="text" class="form-control" id="activity_id">
+            </div>
+            <div class="form-group">
+                <label for="product_price">product_price</label>
+                <input type="number" class="form-control" id="product_price">
+            </div>
+            <br>
+            <div>
+                <button type="submit" class="btn btn-primary">Add Product</button>
+            </div>
+        </form>
     </div>
 
     <!-- JavaScript Bundle with Popper -->

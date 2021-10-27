@@ -11,6 +11,8 @@
 <body>
     <div class="container-fluid">
         <h1>Manage Customers</h1>
+        <br>
+        <h2>Customers List</h2>
         <table class="table">
             <thead>
                 <tr>
@@ -38,6 +40,26 @@
                 </tr>
             </tbody>
         </table>
+        <br>
+        <h2>Add Customer</h2>
+        <form>
+            <div class="form-group">
+                <label for="customer_email">customer_email</label>
+                <input type="text" class="form-control" id="customer_email">
+            </div>
+            <div class="form-group">
+                <label for="customer_firstname">customer_firstname</label>
+                <input type="text" class="form-control" id="customer_firstname">
+            </div>
+            <div class="form-group">
+                <label for="customer_lastname">customer_lastname</label>
+                <input type="text" class="form-control" id="customer_lastname">
+            </div>
+            <br>
+            <div>
+                <button type="submit" class="btn btn-primary">Add Customer</button>
+            </div>
+        </form>
     </div>
 
     <!-- JavaScript Bundle with Popper -->
