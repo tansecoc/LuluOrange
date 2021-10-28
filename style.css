@@ -1,4 +1,4 @@
-body {
+/* body {
   font-family: 'Helvetica Neue', Helvetica, Arial
   font-size: 14px
   line-height: 20px
@@ -77,4 +77,71 @@ body {
   @media screen and (max-width: 580px)
     padding: 2px 16px
     display: block
+} */
+body {
+  margin: 0;
+  font-family: "Lato", sans-serif;
+}
+
+.sidebar {
+  margin: 0;
+  padding: 0;
+  width: 220px;
+  background-color: #313C40;
+  position: fixed;
+  height: 100%;
+  overflow: auto;
+}
+
+.sidebar h2 {
+  display: block;
+  color: rgb(250, 250, 250);
+  padding: 16px;
+  text-decoration: none;
+}
+
+.sidebar a {
+  display: block;
+  color: rgb(250, 250, 250);
+  padding: 16px;
+  text-decoration: none;
+}
+
+.sidebar a.active {
+  background-color: #04AA6D;
+  color: white;
+}
+
+.sidebar a:hover:not(.active) {
+  background-color: #FFA500;
+  color: white;
+}
+
+div.content {
+  margin-left: 220px;
+  padding: 15px 16px;
+  height: 1000px;
+}
+
+@media screen and (max-width: 700px) {
+  .sidebar {
+    width: 100%;
+    height: auto;
+    position: relative;
+  }
+
+  .sidebar a {
+    float: left;
+  }
+
+  div.content {
+    margin-left: 0;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .sidebar a {
+    text-align: center;
+    float: none;
+  }
 }
