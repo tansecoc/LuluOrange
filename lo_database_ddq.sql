@@ -20,27 +20,22 @@
 --
 
 DROP TABLE IF EXISTS `lo_customers`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `lo_customers` (
   `customer_id` int NOT NULL AUTO_INCREMENT,
   `customer_email` varchar(255),
   `customer_firstname` varchar(255),
   `customer_lastname` varchar(255),
   PRIMARY KEY (`customer_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
-/*!40101 SET character_set_client = @saved_cs_client */;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `lo_customers`
 --
 
 LOCK TABLES `lo_customers` WRITE;
-/*!40000 ALTER TABLE `lo_customers` DISABLE KEYS */;
 INSERT INTO `lo_customers` VALUES
 (1, 'jkim@gmail.com', 'Jenny', 'Kim'),
 (2, 'Paul@gmail.com', 'Paul', 'Smith');
-/*!40000 ALTER TABLE `lo_customers` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -48,27 +43,22 @@ UNLOCK TABLES;
 --
 
 DROP TABLE IF EXISTS `lo_genders`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `lo_genders` (
   `gender_id` int NOT NULL AUTO_INCREMENT,
   `gender` char(1),
   `gender_description` varchar(255),
   PRIMARY KEY (`gender_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
-/*!40101 SET character_set_client = @saved_cs_client */;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `lo_genders`
 --
 
 LOCK TABLES `lo_genders` WRITE;
-/*!40000 ALTER TABLE `lo_genders` DISABLE KEYS */;
 INSERT INTO `lo_genders` VALUES
 (1, 'M', 'Male'),
 (2, 'F', 'Female'),
 (3, 'U', 'Unisex');
-/*!40000 ALTER TABLE `lo_genders` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -76,26 +66,21 @@ UNLOCK TABLES;
 --
 
 DROP TABLE IF EXISTS `lo_activities`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `lo_activities` (
   `activity_id` int NOT NULL AUTO_INCREMENT,
   `activity_description` varchar(255) NOT NULL,
   PRIMARY KEY (`activity_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
-/*!40101 SET character_set_client = @saved_cs_client */;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `lo_activities`
 --
 
 LOCK TABLES `lo_activities` WRITE;
-/*!40000 ALTER TABLE `lo_activities` DISABLE KEYS */;
 INSERT INTO `lo_activities` VALUES
 (1, 'Running'),
 (2, 'Swimming'),
 (3, 'Biking');
-/*!40000 ALTER TABLE `lo_activities` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -103,8 +88,6 @@ UNLOCK TABLES;
 --
 
 DROP TABLE IF EXISTS `lo_products`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `lo_products` (
   `product_id` int NOT NULL AUTO_INCREMENT,
   `product_name` varchar(255) NOT NULL,
@@ -115,20 +98,17 @@ CREATE TABLE `lo_products` (
   PRIMARY KEY (`product_id`),
   CONSTRAINT `lo_products_fk_1` FOREIGN KEY (`gender_id`) REFERENCES `lo_genders` (`gender_id`),
   CONSTRAINT `lo_products_fk_2` FOREIGN KEY (`activity_id`) REFERENCES `lo_activities` (`activity_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-/*!40101 SET character_set_client = @saved_cs_client */;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `lo_products`
 --
 
 LOCK TABLES `lo_products` WRITE;
-/*!40000 ALTER TABLE `lo_products` DISABLE KEYS */;
 INSERT INTO `lo_products` VALUES
 (1, 'Leggings', 'Running tights made of Nylux.', 2, 1, 98),
 (2, 'Vent Tech 2.0 Shirt', 'Tech running shirt made of Nylux.', 1, 1, 68),
 (3, 'Cycle Shirt', 'Tech cycling shirt made of Nylux.', 2, 3, 88);
-/*!40000 ALTER TABLE `lo_products` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -136,8 +116,6 @@ UNLOCK TABLES;
 --
 
 DROP TABLE IF EXISTS `lo_stores`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `lo_stores` (
   `store_id` int NOT NULL AUTO_INCREMENT,
   `store_email` varchar(258) NOT NULL,
@@ -148,34 +126,17 @@ CREATE TABLE `lo_stores` (
   `store_state` varchar(258),
   `store_zip` varchar(258),
   PRIMARY KEY (`store_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
-/*!40101 SET character_set_client = @saved_cs_client */;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `lo_stores`
 --
 
 LOCK TABLES `lo_stores` WRITE;
-/*!40000 ALTER TABLE `lo_stores` DISABLE KEYS */;
 INSERT INTO `lo_stores` VALUES
 (1, 'lulu1@luluorange.com', '732-517-4632', '217 Main Ave', 'New York', 'NY', 'USA', '10001'),
 (2, 'lulu2@luluorange.com',	'604-874-1234',	'970 Robson St', 'Vancouverk', 'BC', 'Canada', 'V6Z 2E7');
-/*!40000 ALTER TABLE `lo_stores` ENABLE KEYS */;
 UNLOCK TABLES;
-
-------------------------------------------------------------------------------------------
---
---   Placeholder for lo_orders and lo_orders_products tables
---
-------------------------------------------------------------------------------------------
-
-
-------------------------------------------------------------------------------------------
---
---   The below section includes the bsg tables as an example
---
-------------------------------------------------------------------------------------------
-
 
 ------------------------------------------------------------------------------------------
 --
