@@ -137,8 +137,27 @@ INSERT INTO `lo_stores` VALUES
 (2, 'lulu2@luluorange.com', '604-874-1234', '970 Robson St', 'Vancouverk', 'BC', 'Canada', 'V6Z 2E7');
 UNLOCK TABLES;
 
-------------------------------------------------------------------------------------------
 --
---   Placeholder for lo_orders and lo_orders_products tables
+-- Table structure for table `lo_orders`
 --
-------------------------------------------------------------------------------------------
+
+DROP TABLE IF EXISTS `lo_orders_products`;
+CREATE TABLE `lo_orders_products` (
+  `order_id` int NOT NULL,
+  `product_id` int NOT NULL,
+  `quantity` int NOT NULL,
+  `selling_price` DECIMAL(6,2) not NULL,
+  PRIMARY KEY (`order_id`, `product_id`),
+  CONSTRAINT `lo_orders_products_order_id` FOREIGN KEY (`order_id`) REFERENCES `lo_orders` (`order_id`),
+  CONSTRAINT `lo_orders_products_product_id` FOREIGN KEY (`product_id`) REFERENCES `lo_products` (`product_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `lo_orders_products`
+--
+
+LOCK TABLES `lo_orders_products` WRITE;
+INSERT INTO `lo_orders_products` VALUES
+(1, 2, 1, 59.99),
+(2, 1, 2, 325.00);
+UNLOCK TABLES;
