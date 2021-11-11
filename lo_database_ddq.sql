@@ -45,7 +45,7 @@ UNLOCK TABLES;
 DROP TABLE IF EXISTS `lo_genders`;
 CREATE TABLE `lo_genders` (
   `gender_id` int NOT NULL AUTO_INCREMENT,
-  `gender` varchar(255),
+  `gender` varchar(255) NOT NULL,
   PRIMARY KEY (`gender_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 
