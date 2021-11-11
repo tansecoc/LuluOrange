@@ -22,7 +22,7 @@
 DROP TABLE IF EXISTS `lo_customers`;
 CREATE TABLE `lo_customers` (
   `customer_id` int NOT NULL AUTO_INCREMENT,
-  `customer_email` varchar(255),
+  `customer_email` varchar(255) NOT NULL,
   `customer_firstname` varchar(255),
   `customer_lastname` varchar(255),
   PRIMARY KEY (`customer_id`)
@@ -45,8 +45,7 @@ UNLOCK TABLES;
 DROP TABLE IF EXISTS `lo_genders`;
 CREATE TABLE `lo_genders` (
   `gender_id` int NOT NULL AUTO_INCREMENT,
-  `gender` char(1),
-  `gender_description` varchar(255),
+  `gender` varchar(255),
   PRIMARY KEY (`gender_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 
@@ -56,9 +55,9 @@ CREATE TABLE `lo_genders` (
 
 LOCK TABLES `lo_genders` WRITE;
 INSERT INTO `lo_genders` VALUES
-(1, 'M', 'Male'),
-(2, 'F', 'Female'),
-(3, 'U', 'Unisex');
+(1, 'Male'),
+(2, 'Female'),
+(3, 'Unisex');
 UNLOCK TABLES;
 
 --
