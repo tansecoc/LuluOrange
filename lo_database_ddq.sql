@@ -135,7 +135,7 @@ CREATE TABLE `lo_stores` (
 LOCK TABLES `lo_stores` WRITE;
 INSERT INTO `lo_stores` VALUES
 (1, 'lulu1@luluorange.com', '732-517-4632', '217 Main Ave', 'New York', 'NY', 'USA', '10001'),
-(2, 'lulu2@luluorange.com', '604-874-1234',	'970 Robson St', 'Vancouverk', 'BC', 'Canada', 'V6Z 2E7');
+(2, 'lulu2@luluorange.com', '604-874-1234', '970 Robson St', 'Vancouverk', 'BC', 'Canada', 'V6Z 2E7');
 UNLOCK TABLES;
 
 ------------------------------------------------------------------------------------------
