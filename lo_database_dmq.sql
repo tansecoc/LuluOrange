@@ -5,7 +5,7 @@
 --------------------------------------------------------------
 
 -- get all fields from lo_activities to populate into the Activities List
-SELECT * from lo_activities
+SELECT activity_id, activity_description FROM lo_activities
 
 -- add a new activity
 INSERT INTO lo_activities (activity_description) VALUES (:activity_description)
@@ -21,7 +21,7 @@ DELETE FROM lo_activities WHERE activity_id = :activity_id_selected
 --------------------------------------------------------------
 
 -- get all fields from lo_customers to populate into the Customers List
-SELECT * from lo_customers
+SELECT customer_id, customer_email, customer_firstname, customer_lastname FROM lo_customers
 
 -- add a new customer
 INSERT INTO lo_customers (customer_email, customer_firstname, customer_lastname) VALUES
@@ -39,7 +39,7 @@ UPDATE lo_customers SET
 --------------------------------------------------------------
 
 -- get all fields from lo_genders to populate into the Genders List
-SELECT * from lo_genders
+SELECT gender_id, gender_description FROM lo_genders
 
 -- add a new gender
 INSERT INTO lo_genders (gender_id, gender_description) VALUES (:gender_id, gender_description)
@@ -58,7 +58,7 @@ DELETE FROM lo_genders WHERE gender_id = :gender_id_selected
 --------------------------------------------------------------
 
 -- get all fields from lo_products to populate into the Products List
-SELECT * from lo_products
+SELECT product_id, product_name, product_description, gender_id, activity, product_price FROM lo_products
 
 -- add a new product
 INSERT INTO lo_products (product_name, product_description, gender_id, activity_id, product_price) VALUES
@@ -81,7 +81,7 @@ DELETE FROM lo_product WHERE product_id = :product_id_selected
 --------------------------------------------------------------
 
 -- get all fields from lo_stores to populate into the Stores List
-SELECT * from lo_stores
+SELECT store_id, store_email, store_phone, store_street, store_city, store_state, store_country, store_zip FROM lo_stores
 
 -- add a new store
 INSERT INTO lo_stores (store_email, store_phone, store_street, store_city, store_state, store_country, store_zip) VALUES
