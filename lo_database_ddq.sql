@@ -140,7 +140,30 @@ UNLOCK TABLES;
 --
 -- Table structure for table `lo_orders`
 --
+DROP TABLE IF EXISTS `lo_orders`;
+CREATE TABLE `lo_orders` (
+  `order_id` int NOT NULL AUTO_INCREMENT,
+  `customer_id` int NOT NULL,
+  `store_id` int,
+  `order_date` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`order_id`),
+  CONSTRAINT `lo_orders_fk_customer` FOREIGN KEY (`customer_id`) REFERENCES `lo_customers` (`customer_id`),
+  CONSTRAINT `lo_orders_fk_store` FOREIGN KEY (`store_id`) REFERENCES `lo_stores` (`store_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `lo_orders`
+--
+
+LOCK TABLES `lo_orders` WRITE;
+INSERT INTO `lo_orders` VALUES
+(1, 2, 1, '2021-01-01 00:00:01'),
+(2, 1, 2, '2021-01-01 00:00:01');
+UNLOCK TABLES;
+
+--
+-- Table structure for table `lo_orders`
+--
 DROP TABLE IF EXISTS `lo_orders_products`;
 CREATE TABLE `lo_orders_products` (
   `order_id` int NOT NULL,
