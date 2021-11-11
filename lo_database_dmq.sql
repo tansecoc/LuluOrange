@@ -97,3 +97,15 @@ UPDATE lo_stores SET
     store_country = :store_country,
     store_zip = :store_zip WHERE
         store_id = :store_id_selected
+
+--------------------------------------------------------------
+-- Queries for the Orders page
+--------------------------------------------------------------
+
+-- PLACEHOLDER
+
+--------------------------------------------------------------
+-- Queries for the Orders_Products page
+--------------------------------------------------------------
+
+-- PLACEHOLDER
