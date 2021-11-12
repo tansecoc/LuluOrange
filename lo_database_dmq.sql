@@ -101,11 +101,46 @@ UPDATE lo_stores SET
 --------------------------------------------------------------
 -- Queries for the Orders page
 --------------------------------------------------------------
+-- get all fields from lo_stores to populate into the Orders List
+SELECT order_id, customer_id, store_id, order_date FROM `lo_orders`;
 
--- PLACEHOLDER
+-- add a new order
+INSERT INTO lo_orders (customer_id, store_id, order_date) VALUES (:customer_id_Input, :store_id_Input, :order_date_Input)
+
+-- delete an order
+DELETE FROM lo_orders WHERE order_id = :order_id_selected_from_browse_Orders_page
+
+-- update an order's data based on submission of the Edit Order form 
+UPDATE lo_orders SET 
+customer_id = :customer_id_Input, 
+store_id= :store_id_Input, 
+order_date = :order_date_Input
+WHERE order_id= :order_id_from_the_edit_form
 
 --------------------------------------------------------------
 -- Queries for the Orders_Products page
 --------------------------------------------------------------
+-- get all fields from lo_orders_products to populate into the orders_products List
+SELECT order_id, product_id, quantity, selling_price FROM `lo_orders_products`;
 
--- PLACEHOLDER
+-- add a new order
+INSERT INTO lo_orders_products (order_id, product_id, quantity, selling_price) 
+VALUES (:order_id_Input, :product_id_Input, :quantity_Input, :selling_price_Input)
+
+-- delete an order
+DELETE FROM lo_orders_products 
+WHERE order_id = :order_id_selected_from_browse_Orders_page
+AND product_id = :product_id_selected_from_browse_Orders_page 
+
+-- update an order's data based on submission of the Edit Order form 
+UPDATE lo_orders_products SET 
+quantity = :quantity_Input,
+selling_price = :selling_price_Input
+WHERE order_id= :order_id_from_the_edit_form AND product_id = :product_id_from_the_edit_form, 
+
+-- search by activity_id
+SELECT order_id, lo_orders_products.product_id, lo_products.product_description, quantity, selling_price FROM ((`lo_orders_products`
+INNER JOIN lo_products ON lo_orders_products.product_id = lo_products.product_id)
+INNER JOIN lo_activities ON lo_products.activity_id = lo_activities.activity_id)
+WHERE lo_activities.activity_id = activity_id_from_orders_products_page;
+
