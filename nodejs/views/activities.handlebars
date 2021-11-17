@@ -10,8 +10,8 @@
         <tr> 
             <td>{{activity_id}}</td> 
             <td>{{activity_description}}</td> 
-            <td><a href="/activities_manage/{{id}}">Edit</a></td>
-            <td><button onclick="deletePerson({{activity_id}})">Delete</button></td>
+            <td><a href="/activities_manage/{{activity_id}}">Edit</a></td>
+            <td><button onclick="deleteActivity({{activity_id}})">Delete</button></td>
         </tr> 
         {{/each}} 
     </tbody> 
