@@ -1,0 +1,66 @@
+<html>
+    <body>
+        <div class="sidebar">
+                <h2 id="sidebar_logo">LuluOrange</h2>
+                <a href="index.html">Welcome</a>
+                <a href="/activities_manage">Manage Activities</a>
+                <a href="/customers_manage">Manage Customers</a>
+                <a href="/genders_manage">Manage Genders</a>
+                <a href="/orders_manage">Manage Orders</a>
+                <a href="/orders_products_manage">Manage Orders_Products</a>
+                <a href="/products_manage">Manage Products</a>
+                <a href="/stores_manage">Manage Stores</a>
+        </div>
+        <div class="container-fluid">
+            <div class="content">
+                <h1>Manage Orders</h1>
+                <br>
+                <h2>Orders List</h2>
+                <table class="table">
+                    <thead> 
+                        <th scope="col">order_id</th>
+                        <th scope="col">customer_id</th>
+                        <th scope="col">store_id</th>
+                        <th scope="col">order_date</th>
+                        <th scope="col"></th>
+                        <th scope="col"></th>
+                    </thead> 
+                    <tbody>
+                        {{#each orders}} 
+                        <tr> 
+                            <td scope="row">{{order_id}}</td>
+                            <td>{{customer_id}}</td>
+                            <td>{{store_id}}</td>
+                            <td>{{order_date}}</td>
+                            <td><a href="#">Edit</a></td>
+                            <td><a href="#">Delete</a></td>
+                        </tr> 
+                        {{/each}} 
+                    </tbody>
+                </table>
+                <br>
+                <h2>Add Order</h2>
+
+                <form id="addorder" action="/orders_manage" method="post">
+                    <div class="form-group">
+                            <label for="customer_id">customer_id</label>
+                            <input type="text" class="form-control" id="customer_id" name="customer_id">
+                        </div>
+                        <div class="form-group">
+                            <label for="store_id">store_id</label>
+                            <input type="text" class="form-control" id="store_id" name="store_id">
+                        </div>
+                        <div class="form-group">
+                            <label for="order_date">order_date</label>
+                            <input type="date" class="form-control" id="order_date" name="order_date">
+                        </div>
+                        <br>
+                        <div>
+                            <button type="submit" class="btn btn-primary">Add Order</button>
+                        </div>
+                </form>
+                <br/>
+            </div>
+        </div>
+    </body>
+</html>
