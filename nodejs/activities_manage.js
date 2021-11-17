@@ -26,8 +26,25 @@ module.exports = function(){
             if(callbackCount >= 2){
                 res.render('activities', context);
             }
-
         }
+    });
+
+    /* Adds an activity, redirects to the activities_manage page after adding */
+
+    router.post('/', function(req, res){
+        console.log(req.body)
+        var mysql = req.app.get('mysql');
+        var sql = "INSERT INTO lo_activities (activity_description) VALUES (?)";
+        var inserts = [req.body.activity_description];
+        sql = mysql.pool.query(sql,inserts,function(error, results, fields){
+            if(error){
+                console.log(JSON.stringify(error))
+                res.write(JSON.stringify(error));
+                res.end();
+            }else{
+                res.redirect('/activities_manage');
+            }
+        });
     });
 
 }
