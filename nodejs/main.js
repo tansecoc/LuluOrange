@@ -24,7 +24,7 @@ app.set('mysql', mysql);
 // app.use('/genders_manage', require('./genders_manage.js'));
 // app.use('/orders_manage', require('./orders_manage.js'));
 app.use('/orders_products_manage', require('./orders_products_manage.js'));
-// app.use('/products_manage', require('./products_manage.js'));
+app.use('/products_manage', require('./products_manage.js'));
 app.use('/stores_manage', require('./stores_manage.js'));
 app.use('/', express.static('public'));
 
