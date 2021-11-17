@@ -1,0 +1,26 @@
+<html>
+<h3>Activities List</h3>
+<table>
+    <thead> 
+        <th>activity_id</th> 
+        <th>activity_description</th>  
+    </thead> 
+    <tbody>
+        {{#each people}} 
+        <tr> 
+            <td>{{activity_id}}</td> 
+            <td>{{activity_description}}</td> 
+            <td><a href="/activities_manage/{{id}}">Edit</a></td>
+            <td><button onclick="deletePerson({{activity_id}})">Delete</button></td>
+        </tr> 
+        {{/each}} 
+    </tbody> 
+</table>
+
+<h3>Add Activities</h3>
+<form id="addactivity" action="/activities_manage" method="post">    
+    activity_description: <input type="text" name="activity_description"><br>    
+    <input type="submit" value="Add Activity">
+ </form>
+<br/>
+</html>
