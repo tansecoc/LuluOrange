@@ -13,47 +13,29 @@
         </div>
         <div class="container-fluid">
             <div class="content">
-                <h2>Manage Orders_Products</h2>
+                <h1>Manage Products</h1>
                 <br>
-
-                <h2>Search Products Within Orders</h2>
-
-                <form id='search_products' action='' method=''>
-                    <label>Enter a Product ID:</label>
-                    <input id='product_search_string' type='text' name='product_search_string' value=''>
-                    <input type="button" class="btn btn-primary" value="Search" onclick="searchProductByID()">
-                </form>
-                <br>
-                
-                {{!-- <form>
-                    <div class="form-group">
-                        <label for="activity_id">product_id</label>
-                        <input type="number" class="form-control" id="activity_id_search">
-                    </div>
-                    <br>
-                    <div>
-                        <button type="submit" class="btn btn-primary" id="search_order">Search Order_Product</button>
-                    </div>
-                </form> --}}
-
-
-                <h2>Orders_Products List</h2>
+                <h2>Products List</h2>
                 <table class="table">
                     <thead> 
-                        <th scope="col">order_id</th>
                         <th scope="col">product_id</th>
-                        <th scope="col">quantity</th>
-                        <th scope="col">selling_price</th>
+                        <th scope="col">product_name</th>
+                        <th scope="col">product_description</th>
+                        <th scope="col">gender_id</th>
+                        <th scope="col">activity_id</th>
+                        <th scope="col">product_price</th>>
                         <th scope="col"></th>
                         <th scope="col"></th>
                     </thead> 
                     <tbody>
-                        {{#each orders_products}} 
+                        {{#each products}} 
                         <tr> 
-                            <td scope="row">{{order_id}}</td>
-                            <td>{{product_id}}</td>
-                            <td>{{quantity}}</td>
-                            <td>{{selling_price}}</td>
+                            <td scope="row">{{product_id}}</td>
+                            <td>{{product_name}}</td>
+                            <td>{{product_description}}</td>
+                            <td>{{gender_id}}</td>
+                            <td>{{activity_id}}</td>
+                            <td>{{product_price}}</td>
                             <td><a href="#">Edit</a></td>
                             <td><a href="#">Delete</a></td>
                         </tr> 
@@ -61,20 +43,19 @@
                     </tbody>
                 </table>
                 <br>
+                <h2>Add Product</h2>
 
-                {{!-- <h2>Add Store</h2>
-
-                <form id="addstore" action="/stores_manage" method="post">
+                <form id="addproduct" action="/products_manage" method="post">
                     <div class="form-group">
-                            <label for="store_email">store_email</label>
-                            <input type="text" class="form-control" id="store_email" name="store_email">
+                            <label for="product_name">product_name</label>
+                            <input type="text" class="form-control" id="product_name" name="product_name">
                         </div>
                         <div class="form-group">
-                            <label for="store_phone">store_phone</label>
-                            <input type="text" class="form-control" id="store_phone" name="store_phone">
+                            <label for="product_description">product_description</label>
+                            <input type="text" class="form-control" id="product_description" name="product_description">
                         </div>
                         <div class="form-group">
-                            <label for="store_street">store_street</label>
+                            <label for="gender_id">gender_id (optional)</label>
                             <input type="text" class="form-control" id="store_street" name="store_street">
                         </div>
                         <div class="form-group">
@@ -97,7 +78,7 @@
                         <div>
                             <button type="submit" class="btn btn-primary">Add Store</button>
                 </form>
-                <br/> --}}
+                <br/>
             </div>
         </div>
     </body>

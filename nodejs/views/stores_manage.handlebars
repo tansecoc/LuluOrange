@@ -1,0 +1,88 @@
+<html>
+    <body>
+        <div class="sidebar">
+                <h2 id="sidebar_logo">LuluOrange</h2>
+                <a href="index.html">Welcome</a>
+                <a href="/activities_manage">Manage Activities</a>
+                <a href="/customers_manage">Manage Customers</a>
+                <a href="/genders_manage">Manage Genders</a>
+                <a href="/orders_manage">Manage Orders</a>
+                <a href="/orders_products_manage">Manage Orders_Products</a>
+                <a href="/products_manage">Manage Products</a>
+                <a href="/stores_manage">Manage Stores</a>
+        </div>
+        <div class="container-fluid">
+            <div class="content">
+                <h1>Manage Stores</h1>
+                <br>
+                <h2>Stores List</h2>
+                <table class="table">
+                    <thead> 
+                        <th scope="col">store_id</th>
+                        <th scope="col">store_email</th>
+                        <th scope="col">store_phone</th>
+                        <th scope="col">store_street</th>
+                        <th scope="col">store_city</th>
+                        <th scope="col">store_state</th>
+                        <th scope="col">store_country</th>
+                        <th scope="col">store_zip</th>
+                        <th scope="col"></th>
+                        <th scope="col"></th>
+                    </thead> 
+                    <tbody>
+                        {{#each stores}} 
+                        <tr> 
+                            <td scope="row">{{store_id}}</td>
+                            <td>{{store_email}}</td>
+                            <td>{{store_phone}}</td>
+                            <td>{{store_street}}</td>
+                            <td>{{store_city}}</td>
+                            <td>{{store_state}}</td>
+                            <td>{{store_country}}</td>
+                            <td>{{store_zip}}</td>
+                            <td><a href="#">Edit</a></td>
+                        </tr> 
+                        {{/each}} 
+                    </tbody>
+                </table>
+                <br>
+                <h2>Add Store</h2>
+
+                <form id="addstore" action="/stores_manage" method="post">
+                    <div class="form-group">
+                            <label for="store_email">store_email</label>
+                            <input type="text" class="form-control" id="store_email" name="store_email">
+                        </div>
+                        <div class="form-group">
+                            <label for="store_phone">store_phone</label>
+                            <input type="text" class="form-control" id="store_phone" name="store_phone">
+                        </div>
+                        <div class="form-group">
+                            <label for="store_street">store_street</label>
+                            <input type="text" class="form-control" id="store_street" name="store_street">
+                        </div>
+                        <div class="form-group">
+                            <label for="store_city">store_city</label>
+                            <input type="text" class="form-control" id="store_city" name="store_city">
+                        </div>
+                        <div class="form-group">
+                            <label for="store_state">store_state</label>
+                            <input type="text" class="form-control" id="store_state" name="store_state">
+                        </div>
+                        <div class="form-group">
+                            <label for="store_country">store_country</label>
+                            <input type="text" class="form-control" id="store_zip" name="store_country">
+                        </div>
+                        <div class="form-group">
+                            <label for="store_zip">store_zip</label>
+                            <input type="text" class="form-control" id="store_zip" name="store_zip">
+                        </div>
+                        <br>
+                        <div>
+                            <button type="submit" class="btn btn-primary">Add Store</button>
+                </form>
+                <br/>
+            </div>
+        </div>
+    </body>
+</html>

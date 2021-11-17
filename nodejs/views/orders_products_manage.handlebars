@@ -13,40 +13,56 @@
         </div>
         <div class="container-fluid">
             <div class="content">
-                <h2>Manage Stores</h2>
+                <h1>Manage Orders_Products</h1>
                 <br>
-                <h2>Stores List</h2>
+
+                <h2>Search Products Within Orders</h2>
+
+                <form id='search_products' action='' method=''>
+                    <label>Enter a Product ID:</label>
+                    <input id='product_search_string' type='text' name='product_search_string' value=''>
+                    <input type="button" class="btn btn-primary" value="Search" onclick="searchProductByID()">
+                </form>
+                <br>
+                
+                {{!-- <form>
+                    <div class="form-group">
+                        <label for="activity_id">product_id</label>
+                        <input type="number" class="form-control" id="activity_id_search">
+                    </div>
+                    <br>
+                    <div>
+                        <button type="submit" class="btn btn-primary" id="search_order">Search Order_Product</button>
+                    </div>
+                </form> --}}
+
+
+                <h2>Orders_Products List</h2>
                 <table class="table">
                     <thead> 
-                        <th scope="col">store_id</th>
-                        <th scope="col">store_email</th>
-                        <th scope="col">store_phone</th>
-                        <th scope="col">store_street</th>
-                        <th scope="col">store_city</th>
-                        <th scope="col">store_state</th>
-                        <th scope="col">store_country</th>
-                        <th scope="col">store_zip</th>
+                        <th scope="col">order_id</th>
+                        <th scope="col">product_id</th>
+                        <th scope="col">quantity</th>
+                        <th scope="col">selling_price</th>
                         <th scope="col"></th>
                         <th scope="col"></th>
                     </thead> 
                     <tbody>
-                        {{#each stores}} 
+                        {{#each orders_products}} 
                         <tr> 
-                            <td scope="row">{{store_id}}</td>
-                            <td>{{store_email}}</td>
-                            <td>{{store_phone}}</td>
-                            <td>{{store_street}}</td>
-                            <td>{{store_city}}</td>
-                            <td>{{store_state}}</td>
-                            <td>{{store_country}}</td>
-                            <td>{{store_zip}}</td>
+                            <td scope="row">{{order_id}}</td>
+                            <td>{{product_id}}</td>
+                            <td>{{quantity}}</td>
+                            <td>{{selling_price}}</td>
                             <td><a href="#">Edit</a></td>
+                            <td><a href="#">Delete</a></td>
                         </tr> 
                         {{/each}} 
                     </tbody>
                 </table>
                 <br>
-                <h2>Add Store</h2>
+
+                {{!-- <h2>Add Store</h2>
 
                 <form id="addstore" action="/stores_manage" method="post">
                     <div class="form-group">
@@ -81,7 +97,7 @@
                         <div>
                             <button type="submit" class="btn btn-primary">Add Store</button>
                 </form>
-                <br/>
+                <br/> --}}
             </div>
         </div>
     </body>
