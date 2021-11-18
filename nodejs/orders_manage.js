@@ -24,20 +24,6 @@ module.exports = function(){
         });
     }
 
-    // function getOrdersbyCustomer(req, res, mysql, context, complete){
-    //     var query = "SELECT lo_customers.customer_id, lo_customers.customer_email FROM lo_customers INNER JOIN lo_orders ON lo_customers.customer_id = lo_orders.customer_id WHERE lo_customers.customer_id = ?";
-    //     console.log(req.params)
-    //     var inserts = [req.params.customer_id]
-    //     mysql.pool.query(query, inserts, function(error, results, fields){
-    //           if(error){
-    //               res.write(JSON.stringify(error));
-    //               res.end();
-    //           }
-    //           context.customer_id = results;
-    //           complete();
-    //       });
-    //   }
-
     router.get('/', function(req, res){
         var callbackCount = 0;
         var context = {};
@@ -53,22 +39,6 @@ module.exports = function(){
 
         }
     })
-
-    // router.get('/filter/:customer', function(req, res){
-    //     var callbackCount = 0;
-    //     var context = {};
-    //     context.jsscripts = ["filterorder.js"];
-    //     var mysql = req.app.get('mysql');
-    //     getOrdersbyCustomer(req,res, mysql, context, complete);
-    //     getOrders(res, mysql, context, complete);
-    //     function complete(){
-    //         callbackCount++;
-    //         if(callbackCount >= 2){
-    //             res.render('orders_manage', context);
-    //         }
-
-    //     }
-    // });
 
     router.post('/', function(req, res){
         console.log(req.body.store)
