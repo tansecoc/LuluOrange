@@ -1,0 +1,58 @@
+<html>
+
+<body>
+    <div class="sidebar">
+        <h2 id="sidebar_logo">LuluOrange</h2>
+        <a href="index.html">Welcome</a>
+        <a href="/activities_manage">Manage Activities</a>
+        <a href="/customers_manage">Manage Customers</a>
+        <a href="/genders_manage">Manage Genders</a>
+        <a href="/orders_manage">Manage Orders</a>
+        <a href="/orders_products_manage">Manage Orders_Products</a>
+        <a href="/products_manage">Manage Products</a>
+        <a href="/store_manage/">Manage Stores</a>
+    </div>
+
+    <div class="container-fluid">
+        <div class="content">
+            <h1>Manage Genders</h1>
+            <br>
+            <h2>Genders List</h2>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">gender_id</th>
+                        <th scope="col">gender</th>
+                        <th scope="col"></th>
+                        <th scope="col"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {{#each genders}}
+                    <tr>
+                        <td>{{gender_id}}</td>
+                        <td>{{gender}}</td>
+                        <td><a href="/gender_manage/{{gender_id}}">Edit</a></td>
+                    </tr>
+                    {{/each}}
+                </tbody>
+            </table>
+            <br>
+            <h2>Add Gender</h2>
+
+            <form id="addgender" action="/genders_manage" method="post">
+                <div class="form-group">
+                    <label for="gender">gender</label>
+                    <input type="text" class="form-control" id="gender" name="gender">
+                </div>
+            
+            <br>
+            <div>
+                <button type="submit" class="btn btn-primary">Add Gender</button>
+            </div>
+            </form>
+        </div>
+    </div>
+</body>
+
+</html>
