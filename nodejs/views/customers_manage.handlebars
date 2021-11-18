@@ -1,0 +1,69 @@
+<html>
+
+<body>
+    <div class="sidebar">
+        <h2 id="sidebar_logo">LuluOrange</h2>
+        <a href="index.html">Welcome</a>
+        <a href="/activities_manage">Manage Activities</a>
+        <a href="/customers_manage">Manage Customers</a>
+        <a href="/genders_manage">Manage Genders</a>
+        <a href="/orders_manage">Manage Orders</a>
+        <a href="/orders_products_manage">Manage Orders_Products</a>
+        <a href="/products_manage">Manage Products</a>
+        <a href="/store_manage/">Manage Stores</a>
+    </div>
+
+    <div class="container-fluid">
+        <div class="content">
+            <h1>Manage Customers</h1>
+            <br>
+            <h2>Customers List</h2>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">customer_id</th>
+                        <th scope="col">customer_email</th>
+                        <th scope="col">customer_firstname</th>
+                        <th scope="col">customer_lastname</th>
+                        <th scope="col"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {{#each customers}}
+                    <tr>
+                        <td>{{customer_id}}</td>
+                        <td>{{customer_email}}</td>
+                        <td>{{customer_firstname}}</td>
+                        <td>{{customer_lastname}}</td>
+                        <td><a href="/customers_manage/{{customer_id}}">Edit</a></td>
+                    </tr>
+                    {{/each}}
+                </tbody>
+            </table>
+            <br>
+            <h2>Add Customers</h2>
+
+            <form id="addcustomer" action="/customers_manage" method="post">
+                <div class="form-group">
+                    <label for="customer_email">customer_email</label>
+                    <input type="text" class="form-control" id="customer_email" name="customer_email">
+                </div>
+                <div class="form-group">
+                    <label for="customer_firstname">customer_firstname (optional)</label>
+                    <input type="text" class="form-control" id="customer_firstname" name="customer_firstname">
+                </div>
+                <div class="form-group">
+                    <label for="activity_description">customer_lastname (optional)</label>
+                    <input type="text" class="form-control" id="customer_lastname" name="customer_lastname">
+                </div>
+            
+            <br>
+            <div>
+                <button type="submit" class="btn btn-primary">Add Activity</button>
+            </div>
+            </form>
+        </div>
+    </div>
+</body>
+
+</html>

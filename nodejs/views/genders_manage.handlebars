@@ -15,41 +15,40 @@
 
     <div class="container-fluid">
         <div class="content">
-            <h1>Manage Activities</h1>
+            <h1>Manage Genders</h1>
             <br>
-            <h2>Activities List</h2>
+            <h2>Genders List</h2>
             <table class="table">
                 <thead>
                     <tr>
-                        <th scope="col">activity_id</th>
-                        <th scope="col">activity_description</th>
+                        <th scope="col">gender_id</th>
+                        <th scope="col">gender</th>
                         <th scope="col"></th>
                         <th scope="col"></th>
                     </tr>
                 </thead>
                 <tbody>
-                    {{#each activities}}
+                    {{#each genders}}
                     <tr>
-                        <td>{{activity_id}}</td>
-                        <td>{{activity_description}}</td>
-                        <td><a href="/activities_manage/{{activity_id}}">Edit</a></td>
-                        <td><button onclick="deleteActivity({{activity_id}})">Delete</button></td>
+                        <td>{{gender_id}}</td>
+                        <td>{{gender}}</td>
+                        <td><a href="/gender_manage/{{gender_id}}">Edit</a></td>
                     </tr>
                     {{/each}}
                 </tbody>
             </table>
             <br>
-            <h2>Add Activity</h2>
+            <h2>Add Gender</h2>
 
-            <form id="addactivity" action="/activities_manage" method="post">
+            <form id="addgender" action="/genders_manage" method="post">
                 <div class="form-group">
-                    <label for="activity_description">activity_description</label>
-                    <input type="text" class="form-control" id="activity_description" name="activity_description">
+                    <label for="gender">gender</label>
+                    <input type="text" class="form-control" id="gender" name="gender">
                 </div>
-
+            
             <br>
             <div>
-                <button type="submit" class="btn btn-primary">Add Activity</button>
+                <button type="submit" class="btn btn-primary">Add Gender</button>
             </div>
             </form>
         </div>

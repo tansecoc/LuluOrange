@@ -24,8 +24,8 @@ module.exports = function(){
         getActivities(res, mysql, context, complete);
         function complete(){
             callbackCount++;
-            if(callbackCount >= 2){
-                res.render('activities', context);
+            if(callbackCount >= 1){
+                res.render('activities_manage', context);
             }
         }
     });
@@ -33,7 +33,7 @@ module.exports = function(){
     /* Adds an activity, redirects to the activities_manage page after adding */
 
     router.post('/', function(req, res){
-        //console.log(req.body.activities)
+        console.log(req.body.activity_description)
         console.log(req.body)
         var mysql = req.app.get('mysql');
         var sql = "INSERT INTO lo_activities (activity_description) VALUES (?)";
@@ -116,5 +116,6 @@ module.exports = function(){
     //         }
     //     })
     // })
+
     return router;
 }();
