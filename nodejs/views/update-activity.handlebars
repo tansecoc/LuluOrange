@@ -1,0 +1,7 @@
+<html>
+<h1>Update {{activity.activity_description}}:</h1>
+<form id="update-activity" action="/activities_manage" method="post">
+    Activities description: <input type="text" name="fname" value="{{activity.activity_description}}"><br>
+</form>
+<button onclick="updateActivity({{activity.activity_id}})">Update</button>
+</html>
