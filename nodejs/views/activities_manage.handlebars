@@ -1,26 +1,59 @@
 <html>
-<h3>Activities List</h3>
-<table>
-    <thead> 
-        <th>activity_id</th> 
-        <th>activity_description</th>  
-    </thead> 
-    <tbody>
-        {{#each activities}} 
-        <tr> 
-            <td>{{activity_id}}</td> 
-            <td>{{activity_description}}</td> 
-            <td><a href="/activities_manage/{{activity_id}}">Edit</a></td>
-            <td><button onclick="deleteActivity({{activity_id}})">Delete</button></td>
-        </tr> 
-        {{/each}} 
-    </tbody> 
-</table>
 
-<h3>Add Activities</h3>
-<form id="addactivity" action="/activities_manage" method="post">    
-    activity_description: <input type="text" name="activity_description"><br>    
-    <input type="submit" value="Add Activity">
- </form>
-<br/>
+<body>
+    <div class="sidebar">
+        <h2 id="sidebar_logo">LuluOrange</h2>
+        <a href="index.html">Welcome</a>
+        <a href="/activities_manage">Manage Activities</a>
+        <a href="/customers_manage">Manage Customers</a>
+        <a href="/genders_manage">Manage Genders</a>
+        <a href="/orders_manage">Manage Orders</a>
+        <a href="/orders_products_manage">Manage Orders_Products</a>
+        <a href="/products_manage">Manage Products</a>
+        <a href="/store_manage/">Manage Stores</a>
+    </div>
+
+    <div class="container-fluid">
+        <div class="content">
+            <h1>Manage Activities</h1>
+            <br>
+            <h2>Activities List</h2>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">activity_id</th>
+                        <th scope="col">activity_description</th>
+                        <th scope="col"></th>
+                        <th scope="col"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {{#each activities}}
+                    <tr>
+                        <td>{{activity_id}}</td>
+                        <td>{{activity_description}}</td>
+                        <td><a href="/activities_manage/{{activity_id}}">Edit</a></td>
+                        <td><button onclick="deleteActivity({{activity_id}})">Delete</button></td>
+                    </tr>
+                    {{/each}}
+                </tbody>
+            </table>
+            <br>
+            <h2>Add Activity</h2>
+
+            <form id="addactivity" action="/activities_manage" method="post">
+                <div class="form-group">
+                    <label for="activity_description">activity_description</label>
+                    <input type="text" class="form-control" id="activity_description" name="activity_description">
+                </div>
+            
+            <br>
+            <div>
+                <button type="submit" class="btn btn-primary">Add Activity</button>
+            </div>
+            </form>
+        </div>
+    </div>
+</body>
+
 </html>

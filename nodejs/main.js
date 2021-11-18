@@ -19,7 +19,7 @@ app.set('view engine', 'handlebars');
 app.set('port', process.argv[2]);
 app.set('mysql', mysql);
 // app.use('/welcome', require('./welcome.js'));
-// app.use('/activities_manage', require('./activities_manage.js'));
+app.use('/activities_manage', require('./activities_manage.js'));
 // app.use('/customers_manage', require('./customers_manage.js'));
 // app.use('/genders_manage', require('./genders_manage.js'));
 app.use('/orders_manage', require('./orders_manage.js'));
