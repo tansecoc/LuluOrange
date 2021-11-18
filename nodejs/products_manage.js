@@ -62,7 +62,7 @@ module.exports = function(){
         context.jsscripts = ["filterproduct.js"];
         var mysql = req.app.get('mysql');
         getProductsByActivity(req,res, mysql, context, complete);
-        getProducts(res, mysql, context, complete);
+        getActivities(res, mysql, context, complete);
         function complete(){
             callbackCount++;
             if(callbackCount >= 2){
