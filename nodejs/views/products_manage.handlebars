@@ -15,6 +15,19 @@
             <div class="content">
                 <h1>Manage Products</h1>
                 <br>
+
+                <form id='filter_product' action='' method=''>
+                <!--- this form does not submit directly, the button handles all the interaction with backend -->
+                    <label>Filter Product by Activity:</label>
+                    <br>
+                    <select id='activity_filter' name="activity"> 
+                        {{#each activities}}
+                        <option value="{{activity_id}}">{{activity_description}}</option>
+                        {{/each}}
+                    </select>
+                    <input type="button" value="Filter" class="btn btn-primary" onclick="filterProductByActivity()">
+                </form>
+
                 <h2>Products List</h2>
                 <table class="table">
                     <thead> 
