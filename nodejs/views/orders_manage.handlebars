@@ -15,6 +15,19 @@
             <div class="content">
                 <h1>Manage Orders</h1>
                 <br>
+
+                {{!-- <form id='filter_customer' action='' method=''>
+                <!--- this form does not submit directly, the button handles all the interaction with backend -->
+                    <label>Filter by Customer:</label>
+                    <br>
+                    <select id='customer_filter' name="customer"> 
+                        {{#each customers}}
+                        <option value="{{customer_id}}">{{customer_email}}</option>
+                        {{/each}}
+                    </select>
+                    <input type="button" value="Filter" class="btn btn-primary" onclick="filterOrderByCustomer()">
+                </form> --}}
+
                 <h2>Orders List</h2>
                 <table class="table">
                     <thead> 
