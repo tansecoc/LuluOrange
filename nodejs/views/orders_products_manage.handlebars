@@ -16,27 +16,6 @@
                 <h1>Manage Orders_Products</h1>
                 <br>
 
-                <h2>Search Products Within Orders</h2>
-
-                <form id='search_products' action='' method=''>
-                    <label>Enter a Product ID:</label>
-                    <input id='product_search_string' type='text' name='product_search_string' value=''>
-                    <input type="button" class="btn btn-primary" value="Search" onclick="searchProductByID()">
-                </form>
-                <br>
-                
-                {{!-- <form>
-                    <div class="form-group">
-                        <label for="activity_id">product_id</label>
-                        <input type="number" class="form-control" id="activity_id_search">
-                    </div>
-                    <br>
-                    <div>
-                        <button type="submit" class="btn btn-primary" id="search_order">Search Order_Product</button>
-                    </div>
-                </form> --}}
-
-
                 <h2>Orders_Products List</h2>
                 <table class="table">
                     <thead> 
@@ -62,42 +41,31 @@
                 </table>
                 <br>
 
-                {{!-- <h2>Add Store</h2>
+                <h2>Add Order_Product</h2>
 
-                <form id="addstore" action="/stores_manage" method="post">
+                <form id="addorders_products" action="/orders_products_manage" method="post">
                     <div class="form-group">
-                            <label for="store_email">store_email</label>
-                            <input type="text" class="form-control" id="store_email" name="store_email">
-                        </div>
-                        <div class="form-group">
-                            <label for="store_phone">store_phone</label>
-                            <input type="text" class="form-control" id="store_phone" name="store_phone">
-                        </div>
-                        <div class="form-group">
-                            <label for="store_street">store_street</label>
-                            <input type="text" class="form-control" id="store_street" name="store_street">
-                        </div>
-                        <div class="form-group">
-                            <label for="store_city">store_city</label>
-                            <input type="text" class="form-control" id="store_city" name="store_city">
-                        </div>
-                        <div class="form-group">
-                            <label for="store_state">store_state</label>
-                            <input type="text" class="form-control" id="store_state" name="store_state">
-                        </div>
-                        <div class="form-group">
-                            <label for="store_country">store_country</label>
-                            <input type="text" class="form-control" id="store_zip" name="store_country">
-                        </div>
-                        <div class="form-group">
-                            <label for="store_zip">store_zip</label>
-                            <input type="text" class="form-control" id="store_zip" name="store_zip">
-                        </div>
-                        <br>
-                        <div>
-                            <button type="submit" class="btn btn-primary">Add Store</button>
+                            <label for="order_id">order_id</label>
+                            <input type="text" class="form-control" id="order_id" name="order_id">
+                    </div>
+                    <div class="form-group">
+                        <label for="product_id">product_id</label>
+                        <input type="text" class="form-control" id="product_id" name="product_id">
+                    </div>
+                    <div class="form-group">
+                        <label for="quantity">quantity</label>
+                        <input type="text" class="form-control" id="quantity" name="quantity">
+                    </div>
+                    <div class="form-group">
+                        <label for="selling_price">selling_price</label>
+                        <input type="text" class="form-control" id="selling_price" name="selling_price">
+                    </div>
+                    <br>
+                    <div>
+                        <button type="submit" class="btn btn-primary">Add Order_Product</button>
+                    </div>
                 </form>
-                <br/> --}}
+                <br/>
             </div>
         </div>
     </body>

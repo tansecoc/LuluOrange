@@ -13,15 +13,42 @@ module.exports = function(){
         });
     }
 
+    function getActivities(res, mysql, context, complete){
+        mysql.pool.query("SELECT activity_id, activity_description FROM lo_activities", function(error, results, fields){
+            if(error){
+                res.write(JSON.stringify(error));
+                res.end();
+            }
+            context.activities = results;
+            complete();
+        });
+    }
+
+    function getProductsbyActivity(req, res, mysql, context, complete){
+        // var query = "SELECT bsg_people.character_id as id, fname, lname, bsg_planets.name AS homeworld, age FROM bsg_people INNER JOIN bsg_planets ON homeworld = bsg_planets.planet_id WHERE bsg_people.homeworld = ?";
+        var query = "SELECT lo_products.product_id as id, lo_products_product_description AS product FROM lo_products INNER JOIN lo_activities ON lo_activities.activities_id = lo_products.activities_id WHERE lo_activities.activity_id = ?";
+        console.log(req.params)
+        var inserts = [req.params.product]
+        mysql.pool.query(query, inserts, function(error, results, fields){
+              if(error){
+                  res.write(JSON.stringify(error));
+                  res.end();
+              }
+              context.product = results;
+              complete();
+          });
+      }
+
     router.get('/', function(req, res){
         var callbackCount = 0;
         var context = {};
         context.jsscripts = [];
         var mysql = req.app.get('mysql');
         getProducts(res, mysql, context, complete);
+        getActivities(res, mysql, context, complete);
         function complete(){
             callbackCount++;
-            if(callbackCount >= 1){
+            if(callbackCount >= 2){
                 res.render('products_manage', context);
             }
 
