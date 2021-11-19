@@ -76,6 +76,9 @@ UPDATE lo_products SET
 -- delete a product
 DELETE FROM lo_product WHERE product_id = :product_id_selected
 
+-- filter products by activity
+SELECT lo_products.product_id, lo_products.product_name, lo_products.product_description, lo_products.gender_id, lo_products.activity_id, lo_products.product_price from lo_products WHERE lo_products.activity_id = ?;
+
 --------------------------------------------------------------
 -- Queries for the Stores page
 --------------------------------------------------------------
