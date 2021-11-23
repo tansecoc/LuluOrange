@@ -90,5 +90,22 @@ module.exports = function(){
         });
     });
 
+    //Delete a product
+    router.get('/delete', function (req, res, next) {
+        var callbackCount = 0;
+        var deleteID = req.query.product;
+        var mysql = req.app.get('mysql');
+        var sql = "DELETE FROM lo_products WHERE product_id = " + deleteID;
+        sql = mysql.pool.query(sql, function(error, results, fields){
+            if(error){
+                console.log(JSON.stringify(error))
+                res.write(JSON.stringify(error));
+                res.end();
+            }else{
+                res.redirect('/products_manage');
+            }
+        });
+    });
+
     return router;
 }();

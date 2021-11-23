@@ -58,5 +58,22 @@ module.exports = function(){
         });
     });
 
+    //Delete an order
+    router.get('/delete', function (req, res, next) {
+        var callbackCount = 0;
+        var deleteID = req.query.order;
+        var mysql = req.app.get('mysql');
+        var sql = "DELETE FROM lo_orders WHERE order_id = " + deleteID;
+        sql = mysql.pool.query(sql, function(error, results, fields){
+            if(error){
+                console.log(JSON.stringify(error))
+                res.write(JSON.stringify(error));
+                res.end();
+            }else{
+                res.redirect('/orders_manage');
+            }
+        });
+    });
+
     return router;
 }();

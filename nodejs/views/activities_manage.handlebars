@@ -38,6 +38,18 @@
                     {{/each}}
                 </tbody>
             </table>
+            <script>
+                function deleteActivity(id){
+                    $.ajax({
+                        url: '/activities_manage/' + id,
+                        type: 'DELETE',
+                        success: function(result){
+                            window.location.reload(true);
+                        }
+                    })
+                };
+            </script>
+
             <br>
             <h2>Add Activity</h2>
 
