@@ -45,13 +45,18 @@ body {
 }
 
 .button_del {
-  background-color: #313C40; 
+  background-color: #5a6a70; 
   border: none;
   color: white;
   padding: 3px 6px;
   text-align: center;
   border-radius: 4px;
   font-size: 14px;
+  transition-duration: 0.4s;
+}
+.button_del:hover {
+  background-color: #252d30; 
+  color: white;
 }
 
 .button_sub {
