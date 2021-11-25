@@ -1,0 +1,15 @@
+<html>
+<div class="container-fluid">
+<h2>Update Store ID: {{store.store_id}}</h2>
+<form id="update-store" action="/stores" method="post">
+    store_email: <input type="text" name="store_email" value="{{store.store_email}}"><br>
+    store_phone: <input type="text" name="store_phone" value="{{store.store_phone}}"><br>
+    store_street: <input type="text" name="store_street" value="{{store.store_street}}"><br>
+    store_city: <input type="text" name="store_city" value="{{store.store_city}}"><br>
+    store_state: <input type="text" name="store_state" value="{{store.store_state}}"><br>
+    store_country: <input type="text" name="store_country" value="{{store.store_country}}"><br>
+    store_zip: <input type="text" name="store_zip" value="{{store.store_zip}}"><br>
+</form>
+<button onclick="updateStore({{store.store_id}})" class="btn btn-primary">Update</button>
+</div>
+</html>
