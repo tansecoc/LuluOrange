@@ -11,7 +11,7 @@
 <body>
     <div class="sidebar">
         <h2 id="sidebar_logo">LuluOrange</h2>
-        <a href="index.html">Welcome</a>
+        <a href="/index.html">Welcome</a>
         <a href="/activities_manage">Manage Activities</a>
         <a href="/customers_manage">Manage Customers</a>
         <a href="/genders_manage">Manage Genders</a>
@@ -25,32 +25,10 @@
         <div class="content">
             <h1>Manage Activities</h1>
             <br>
-            {{!-- <h2>Activities List</h2>
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th scope="col">activity_id</th>
-                        <th scope="col">activity_description</th>
-                        <th scope="col"></th>
-                        <th scope="col"></th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {{#each activities}}
-                    <tr>
-                        <td>{{activity_id}}</td>
-                        <td>{{activity_description}}</td>
-                        <td><a href="/activities_manage/{{activity_id}}">Edit</a></td>
-                        <td><button onclick="deleteActivity({{activity_id}})">Delete</button></td>
-                    </tr>
-                    {{/each}}
-                </tbody>
-            </table> --}}
             <br>
             <h3>Update {{activity.activity_description}}:</h3>
                 <form id="update-activity" action="/activities_manage" method="post">
-                    Activities description: <input type="text" name="activity_description" value="{{activity.activity_description}}"><br>
-                    
+                    Activities description: <input type="text" name="activity_description" value="{{activity.activity_description}}"><br>                  
                 </form>
                 <button onclick="updateActivity({{activity.activity_id}})">Update</button>
         </div>
