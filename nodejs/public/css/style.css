@@ -44,6 +44,24 @@ body {
   border: 0;
 }
 
+.button_del {
+  background-color: #313C40; 
+  border: none;
+  color: white;
+  padding: 3px 6px;
+  text-align: center;
+  border-radius: 4px;
+}
+
+.button_sub {
+  background-color: #313C40; 
+  border: none;
+  color: white;
+  padding: 7px 10px;
+  text-align: center;
+  border-radius: 4px;
+}
+
 div.content {
   margin-left: 220px;
   padding: 15px 16px;

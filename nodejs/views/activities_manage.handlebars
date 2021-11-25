@@ -32,8 +32,8 @@
                     <tr>
                         <td>{{activity_id}}</td>
                         <td>{{activity_description}}</td>
-                        <td><a href="/activities_manage/{{activity_id}}" class="btn btn-primary">Edit</a></td>
-                        <td><button onclick="deleteActivity({{activity_id}})" class="btn btn-primary">Delete</button></td>
+                        <td><a href="/activities_manage/{{activity_id}}">Edit</a></td>
+                        <td><button onclick="deleteActivity({{activity_id}})" class="button_del">Delete</button></td>
                     </tr>
                     {{/each}}
                 </tbody>
@@ -61,7 +61,7 @@
 
             <br>
             <div>
-                <button type="submit" class="btn btn-primary">Add Activity</button>
+                <button type="submit" class="button_sub"">Add Activity</button>
             </div>
             </form>
             <br>
