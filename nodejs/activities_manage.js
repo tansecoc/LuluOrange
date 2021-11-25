@@ -54,7 +54,7 @@ module.exports = function(){
     router.get('/:activity_id', function(req, res){
         callbackCount = 0;
         var context = {};
-        //context.jsscripts = ["selectedplanet.js", "updateperson.js"];
+        context.jsscripts = ["updateactivity.js"];
         var mysql = req.app.get('mysql');
         getActivity(res, mysql, context, req.params.activity_id, complete);
         function complete(){
@@ -98,6 +98,7 @@ module.exports = function(){
             }
         });
     });
+    
 
     /* Route to delete an activity, simply returns a 202 upon success. Ajax will handle this. */
 
