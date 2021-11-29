@@ -13,6 +13,22 @@ module.exports = function(){
         });
     }
 
+    function getOrder_Product(res, mysql, context, order_id, product_id, complete){
+        // console.log('order_id:', order_id)
+        // console.log('product_id:', product_id)
+        var sql = "SELECT order_id, product_id, quantity, selling_price FROM lo_orders_products WHERE order_id=? AND product_id=?";
+        var inserts = [order_id, product_id];
+        mysql.pool.query(sql, inserts, function(error, results, fields){
+            if(error){
+                res.write(JSON.stringify(error));
+                res.end();
+            }
+            // console.log('results[0]:', results[0])
+            context.order_product= results[0];
+            complete();
+        });
+    }
+
     router.get('/', function(req, res){
         var callbackCount = 0;
         var context = {};
@@ -28,8 +44,52 @@ module.exports = function(){
         }
     })
 
+    /* Display one order_product for the specific purpose of updating order_products */
+
+    router.get('/:order_id_product_id', function(req, res){
+        callbackCount = 0;
+        var context = {};
+        context.jsscripts = ["updateorderproduct.js"];
+        var mysql = req.app.get('mysql');
+        // console.log('params:', req.params)
+        var paramsSplit = req.params.order_id_product_id.split('_');
+        var params_order_id = paramsSplit[0];
+        var params_product_id = paramsSplit[1];
+        // console.log('order_id:', params_order_id)
+        // console.log('product_id:', params_product_id)
+        getOrder_Product(res, mysql, context, params_order_id, params_product_id, complete);
+        function complete(){
+            callbackCount++;
+            if(callbackCount >= 1){
+                res.render('update-order-product', context);
+            }
+
+        }
+    });
+
+    /* The URI that update data is sent to in order to update a store */
+
+    router.put('/:id', function(req, res){
+        var mysql = req.app.get('mysql');
+        console.log('req.body:', req.body)
+        // console.log(req.params.id)
+        var sql = "UPDATE lo_orders_products SET order_id=?, product_id=?, quantity=?, selling_price=? WHERE order_id=? AND product_id=?";
+        var inserts = [req.body.order_id, req.body.product_id, req.body.quantity, req.body.selling_price, req.body.order_id, req.body.product_id];
+        // console.log(inserts)
+        sql = mysql.pool.query(sql,inserts,function(error, results, fields){
+            if(error){
+                console.log(error)
+                res.write(JSON.stringify(error));
+                res.end();
+            }else{
+                res.status(200);
+                res.end();
+            }
+        });
+    });
+
     router.post('/', function(req, res){
-        console.log(req.body.store)
+        // console.log(req.body.store)
         console.log(req.body)
         var mysql = req.app.get('mysql');
         var sql = "INSERT INTO lo_orders_products (order_id, product_id, quantity, selling_price) VALUES (?,?,?,?)";
