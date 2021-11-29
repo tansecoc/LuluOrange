@@ -56,7 +56,7 @@ module.exports = function(){
     router.get('/', function(req, res){
         var callbackCount = 0;
         var context = {};
-        context.jsscripts = ["filterproduct.js"];
+        context.jsscripts = ["filterproduct.js", "deleteproduct.js"];
         var mysql = req.app.get('mysql');
         getProducts(res, mysql, context, complete);
         getActivities(res, mysql, context, complete);
@@ -73,7 +73,7 @@ module.exports = function(){
     router.get('/filter/:product', function(req, res){
         var callbackCount = 0;
         var context = {};
-        context.jsscripts = ["filterproduct.js"];
+        context.jsscripts = ["filterproduct.js", "deleteproduct.js"];
         var mysql = req.app.get('mysql');
         getProductsByActivity(req,res, mysql, context, complete);
         getActivities(res, mysql, context, complete);
@@ -91,7 +91,7 @@ module.exports = function(){
     router.get('/:product_id', function(req, res){
         callbackCount = 0;
         var context = {};
-        context.jsscripts = ["updateproduct.js"];
+        context.jsscripts = ["updateproduct.js", "deleteproduct.js"];
         var mysql = req.app.get('mysql');
         getProduct(res, mysql, context, req.params.product_id, complete);
         function complete(){
@@ -141,22 +141,23 @@ module.exports = function(){
         });
     });
 
-    //Delete a product
-    router.get('/delete', function (req, res, next) {
-        var callbackCount = 0;
-        var deleteID = req.query.product;
+    /* Route to delete a product, simply returns a 202 upon success. Ajax will handle this. */
+
+    router.delete('/:id', function(req, res){
         var mysql = req.app.get('mysql');
-        var sql = "DELETE FROM lo_products WHERE product_id = " + deleteID;
-        sql = mysql.pool.query(sql, function(error, results, fields){
+        var sql = "DELETE FROM lo_products WHERE product_id = ?";
+        var inserts = [req.params.id];
+        sql = mysql.pool.query(sql, inserts, function(error, results, fields){
             if(error){
-                console.log(JSON.stringify(error))
+                console.log(error)
                 res.write(JSON.stringify(error));
+                res.status(400);
                 res.end();
             }else{
-                res.redirect('/products_manage');
+                res.status(202).end();
             }
-        });
-    });
+        })
+    })
 
     return router;
 }();
