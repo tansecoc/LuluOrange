@@ -51,8 +51,7 @@
                             <td>{{activity_id}}</td>
                             <td>{{product_price}}</td>
                             <td><a href="/products_manage/{{product_id}}" class="btn btn-primary">Edit</a></td>
-                            <td><button onclick="deleteProduct({{product_id}})">Delete</button></td>
-                            {{!-- <td><button class="btn btn-primary" onclick="location.href='/products_manage/delete?product={{product_id}}';">Delete</button></td> --}}
+                            <td><button class="button_del" onclick="deleteProduct({{product_id}})">Delete</button></td>
                         </tr> 
                         {{/each}} 
                     </tbody>
