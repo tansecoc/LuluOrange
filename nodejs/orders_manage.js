@@ -40,7 +40,7 @@ module.exports = function(){
     router.get('/', function(req, res){
         var callbackCount = 0;
         var context = {};
-        context.jsscripts = ["filterorder.js"];
+        context.jsscripts = ["filterorder.js", "deleteorder.js"];
         var mysql = req.app.get('mysql');
         getOrders(res, mysql, context, complete);
         getCustomers(res, mysql, context, complete);
@@ -58,7 +58,7 @@ module.exports = function(){
     router.get('/:order_id', function(req, res){
         callbackCount = 0;
         var context = {};
-        context.jsscripts = ["updateorder.js"];
+        context.jsscripts = ["updateorder.js", "deleteorder.js"];
         var mysql = req.app.get('mysql');
         getOrder(res, mysql, context, req.params.order_id, complete);
         function complete(){
@@ -108,22 +108,24 @@ module.exports = function(){
         });
     });
 
-    // //Delete an order
-    // router.get('/delete', function (req, res, next) {
-    //     var callbackCount = 0;
-    //     var deleteID = req.query.order;
-    //     var mysql = req.app.get('mysql');
-    //     var sql = "DELETE FROM lo_orders WHERE order_id = " + deleteID;
-    //     sql = mysql.pool.query(sql, function(error, results, fields){
-    //         if(error){
-    //             console.log(JSON.stringify(error))
-    //             res.write(JSON.stringify(error));
-    //             res.end();
-    //         }else{
-    //             res.redirect('/orders_manage');
-    //         }
-    //     });
-    // });
+    /* Route to delete a order, simply returns a 202 upon success. Ajax will handle this. */
+
+    router.delete('/:id', function(req, res){
+        var mysql = req.app.get('mysql');
+        var sql = "DELETE FROM lo_orders WHERE order_id = ?";
+        var inserts = [req.params.id];
+        sql = mysql.pool.query(sql, inserts, function(error, results, fields){
+            if(error){
+                console.log(error)
+                res.write(JSON.stringify(error));
+                res.status(400);
+                res.end();
+            }else{
+                res.status(202).end();
+            }
+        })
+    })
+
 
     return router;
 }();
