@@ -35,7 +35,7 @@
                         <td>{{customer_email}}</td>
                         <td>{{customer_firstname}}</td>
                         <td>{{customer_lastname}}</td>
-                        <td><a href="/customers_manage/{{customer_id}}" class="btn btn-primary">Edit</a></td>
+                        <td><a href="/customers_manage/{{customer_id}}">Edit</a></td>
                     </tr>
                     {{/each}}
                 </tbody>
@@ -53,13 +53,13 @@
                     <input type="text" class="form-control" id="customer_firstname" name="customer_firstname">
                 </div>
                 <div class="form-group">
-                    <label for="activity_description">customer_lastname (optional)</label>
+                    <label for="customer_description">customer_lastname (optional)</label>
                     <input type="text" class="form-control" id="customer_lastname" name="customer_lastname">
                 </div>
             
             <br>
             <div>
-                <button type="submit" class="btn btn-primary">Add Activity</button>
+                <button type="submit" class="button_sub">Add Customer</button>
             </div>
             </form>
             <br>

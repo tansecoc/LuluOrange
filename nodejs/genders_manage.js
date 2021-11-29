@@ -30,6 +30,36 @@ module.exports = function(){
         }
     });
 
+    /* Display one gender for the specific purpose of updating genders */
+
+    router.get('/:gender_id', function(req, res){
+        callbackCount = 0;
+        var context = {};
+        context.jsscripts = ["updategender.js"];
+        var mysql = req.app.get('mysql');
+        getGender(res, mysql, context, req.params.gender_id, complete);
+        function complete(){
+            callbackCount++;
+            if(callbackCount >= 1){
+                res.render('update-gender', context);
+            }
+
+        }
+    });
+
+    function getGender(res, mysql, context, gender_id, complete){
+        var sql = "SELECT gender_id, gender FROM lo_genders WHERE gender_id = ?";
+        var inserts = [gender_id];
+        mysql.pool.query(sql, inserts, function(error, results, fields){
+            if(error){
+                res.write(JSON.stringify(error));
+                res.end();
+            }
+            context.gender = results[0];
+            complete();
+        });
+    }
+
     /* Adds a gender, redirects to the genders_manage page after adding */
 
     router.post('/', function(req, res){
@@ -49,6 +79,25 @@ module.exports = function(){
         });
     });
 
+    /* The URI that update data is sent to in order to update an gender */
+
+    router.put('/:gender_id', function(req, res){
+        var mysql = req.app.get('mysql');
+        console.log(req.body)
+        console.log(req.params.gender_id)
+        var sql = "UPDATE lo_genders SET gender=? WHERE gender_id=?";
+        var inserts = [req.body.gender, req.params.gender_id];
+        sql = mysql.pool.query(sql,inserts,function(error, results, fields){
+            if(error){
+                console.log(error)
+                res.write(JSON.stringify(error));
+                res.end();
+            }else{
+                res.status(200);
+                res.end();
+            }
+        });
+    });
    
     return router;
 }();

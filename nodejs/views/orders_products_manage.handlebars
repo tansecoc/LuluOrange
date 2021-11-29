@@ -33,7 +33,7 @@
                             <td>{{product_id}}</td>
                             <td>{{quantity}}</td>
                             <td>{{selling_price}}</td>
-                            <td><a href="/orders_products_manage/{{order_id}}_{{product_id}}" class="btn btn-primary">Edit</a></td>
+                            <td><a href="/orders_products_manage/{{order_id}}_{{product_id}}">Edit</a></td>
                             <td><button class="button_del" onclick="deleteOrderProduct({{order_id}}, {{product_id}})">Delete</button></td>
                         </tr> 
                         {{/each}} 
@@ -62,7 +62,7 @@
                     </div>
                     <br>
                     <div>
-                        <button type="submit" class="btn btn-primary">Add Order_Product</button>
+                        <button type="submit" class="button_sub">Add Order_Product</button>
                     </div>
                 </form>
                 <br/>

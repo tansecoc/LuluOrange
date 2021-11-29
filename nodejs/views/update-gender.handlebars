@@ -15,15 +15,15 @@
 
     <div class="container-fluid">
         <div class="content">
-            <h1>Manage Activities</h1>
+            <h1>Manage Genders</h1>
             <br>
             <br>
-            <h3>Update {{activity.activity_description}}:</h3>
-                <form id="update-activity" action="/activities_manage" method="post">
-                    Activities description: <input type="text" class="form-control" name="activity_description" value="{{activity.activity_description}}"><br>                  
+            <h3>Update {{gender.gender_description}}:</h3>
+                <form id="update-gender" action="/genders_manage" method="post">
+                    Gender: <input type="text" class="form-control" name="gender" value="{{gender.gender}}"><br>                  
                 </form>
                 <br>
-                <button class="button_sub" onclick="updateActivity({{activity.activity_id}})">Update</button>
+                <button class="button_sub" onclick="updateGender({{gender.gender_id}})">Update</button>
         </div>
     </div>    
 </body>

@@ -1,0 +1,36 @@
+<html>
+
+<body>
+    <div class="sidebar">
+        <h2 id="sidebar_logo">LuluOrange</h2>
+        <a href="/index.html">Welcome</a>
+        <a href="/activities_manage">Manage Activities</a>
+        <a href="/customers_manage">Manage Customers</a>
+        <a href="/genders_manage">Manage Genders</a>
+        <a href="/orders_manage">Manage Orders</a>
+        <a href="/orders_products_manage">Manage Orders_Products</a>
+        <a href="/products_manage">Manage Products</a>
+        <a href="/store_manage/">Manage Stores</a>
+    </div>
+
+    <div class="container-fluid">
+        <div class="content">
+            <h1>Manage Customers</h1>
+            <br>
+            <br>
+            <h3>Update {{customer.customer_id}}:</h3>
+                <form id="update-customer" action="/customers_manage" method="post">                    
+                    customer_email: <input type="text" class="form-control" name="customer_email" value="{{customer.customer_email}}"><br>
+                    customer_firstname: <input type="text" class="form-control" name="customer_firstname" value="{{customer.customer_firstname}}"><br>
+                    customer_lastname: <input type="text" class="form-control" name="customer_lastname" value="{{customer.customer_lastname}}"><br>                  
+                </form>
+                <br>
+                <button class="button_sub" onclick="updateCustomer({{customer.customer_id}})">Update</button>
+        </div>
+    </div>    
+</body>
+</html>
+
+
+
+
