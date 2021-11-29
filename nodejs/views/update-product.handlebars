@@ -1,0 +1,13 @@
+<html>
+<div class="container-fluid">
+<h2>Update Product ID: {{product.product_id}}</h2>
+<form id="update-product" action="/products" method="post">
+    product_name: <input type="text" name="product_name" value="{{product.product_name}}"><br>
+    product_description: <input type="text" name="product_description" value="{{product.product_description}}"><br>
+    gender_id: <input type="text" name="gender_id" value="{{product.gender_id}}"><br>
+    activity_id: <input type="text" name="activity_id" value="{{product.activity_id}}"><br>
+    product_price: <input type="text" name="product_price" value="{{product.product_price}}"><br>
+</form>
+<button onclick="updateProduct({{product.product_id}})" class="btn btn-primary">Update</button>
+</div>
+</html>
