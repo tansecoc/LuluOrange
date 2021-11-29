@@ -1,0 +1,12 @@
+<html>
+<div class="container-fluid">
+<h2>Update Order_Product ID: {{order_product.order_id}}_{{order_product.product_id}}</h2>
+<form id="update-order-product" action="/orders-products" method="post">
+    order_id: <input type="text" name="order_id" value="{{order_product.order_id}}"><br>
+    product_id: <input type="text" name="product_id" value="{{order_product.product_id}}"><br>
+    quantity: <input type="text" name="quantity" value="{{order_product.quantity}}"><br>
+    selling_price: <input type="text" name="selling_price" value="{{order_product.selling_price}}"><br>
+</form>
+<button onclick="updateOrderProduct({{order_product.order_id}}, {{order_product.product_id}})" class="btn btn-primary">Update</button>
+</div>
+</html>
