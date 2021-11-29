@@ -13,6 +13,19 @@ module.exports = function(){
         });
     }
 
+    function getOrder(res, mysql, context, id, complete){
+        var sql = "SELECT order_id, customer_id, store_id, order_date FROM lo_orders WHERE order_id = ?";
+        var inserts = [id];
+        mysql.pool.query(sql, inserts, function(error, results, fields){
+            if(error){
+                res.write(JSON.stringify(error));
+                res.end();
+            }
+            context.order = results[0];
+            complete();
+        });
+    }
+
     function getCustomers(res, mysql, context, complete){
         mysql.pool.query("SELECT customer_id, customer_email FROM lo_customers", function(error, results, fields){
             if(error){
@@ -40,6 +53,23 @@ module.exports = function(){
         }
     })
 
+    /* Display one order for the specific purpose of updating orders */
+
+    router.get('/:order_id', function(req, res){
+        callbackCount = 0;
+        var context = {};
+        context.jsscripts = ["updateorder.js"];
+        var mysql = req.app.get('mysql');
+        getOrder(res, mysql, context, req.params.order_id, complete);
+        function complete(){
+            callbackCount++;
+            if(callbackCount >= 1){
+                res.render('update-order', context);
+            }
+
+        }
+    });
+
     router.post('/', function(req, res){
         console.log(req.body.store)
         console.log(req.body)
@@ -58,22 +88,42 @@ module.exports = function(){
         });
     });
 
-    //Delete an order
-    router.get('/delete', function (req, res, next) {
-        var callbackCount = 0;
-        var deleteID = req.query.order;
+    /* The URI that update data is sent to in order to update an order */
+
+    router.put('/:id', function(req, res){
         var mysql = req.app.get('mysql');
-        var sql = "DELETE FROM lo_orders WHERE order_id = " + deleteID;
-        sql = mysql.pool.query(sql, function(error, results, fields){
+        console.log(req.body)
+        console.log(req.params.id)
+        var sql = "UPDATE lo_orders SET customer_id=?, store_id=?, order_date=? WHERE order_id=?";
+        var inserts = [req.body.customer_id, req.body.store_id, req.body.order_date, req.params.id];
+        sql = mysql.pool.query(sql,inserts,function(error, results, fields){
             if(error){
-                console.log(JSON.stringify(error))
+                console.log(error)
                 res.write(JSON.stringify(error));
                 res.end();
             }else{
-                res.redirect('/orders_manage');
+                res.status(200);
+                res.end();
             }
         });
     });
+
+    // //Delete an order
+    // router.get('/delete', function (req, res, next) {
+    //     var callbackCount = 0;
+    //     var deleteID = req.query.order;
+    //     var mysql = req.app.get('mysql');
+    //     var sql = "DELETE FROM lo_orders WHERE order_id = " + deleteID;
+    //     sql = mysql.pool.query(sql, function(error, results, fields){
+    //         if(error){
+    //             console.log(JSON.stringify(error))
+    //             res.write(JSON.stringify(error));
+    //             res.end();
+    //         }else{
+    //             res.redirect('/orders_manage');
+    //         }
+    //     });
+    // });
 
     return router;
 }();
