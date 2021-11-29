@@ -34,7 +34,7 @@
                             <td>{{store_id}}</td>
                             <td>{{order_date}}</td>
                             <td><a href="/orders_manage/{{order_id}}" class="btn btn-primary">Edit</a></td>
-                            <td><button class="btn btn-primary" onclick="location.href='/orders_manage/delete?order={{order_id}}';">Delete</button></td>
+                            <td><button class="button_del" onclick="deleteOrder({{order_id}})">Delete</button></td>
                         </tr> 
                         {{/each}} 
                     </tbody>
