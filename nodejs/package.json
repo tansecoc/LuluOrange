@@ -6,16 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/tansecoc/LuluOrange.git"
-  },
   "author": "",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/tansecoc/LuluOrange/issues"
-  },
-  "homepage": "https://github.com/tansecoc/LuluOrange#readme",
   "dependencies": {
     "bootstrap": "^5.1.3",
     "express": "^4.17.1",
