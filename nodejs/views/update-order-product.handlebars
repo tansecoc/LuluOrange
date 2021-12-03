@@ -1,12 +1,33 @@
-<html>
-<div class="container-fluid">
-<h2>Update Order_Product ID: {{order_product.order_id}}_{{order_product.product_id}}</h2>
-<form id="update-order-product" action="/orders-products" method="post">
-    order_id: <input type="text" name="order_id" value="{{order_product.order_id}}"><br>
-    product_id: <input type="text" name="product_id" value="{{order_product.product_id}}"><br>
-    quantity: <input type="text" name="quantity" value="{{order_product.quantity}}"><br>
-    selling_price: <input type="text" name="selling_price" value="{{order_product.selling_price}}"><br>
-</form>
-<button onclick="updateOrderProduct({{order_product.order_id}}, {{order_product.product_id}})" class="btn btn-primary">Update</button>
-</div>
+<body>
+    <div class="sidebar">
+        <h2 id="sidebar_logo">LuluOrange</h2>
+        <a href="/index.html">Welcome</a>
+        <a href="/activities_manage">Manage Activities</a>
+        <a href="/customers_manage">Manage Customers</a>
+        <a href="/genders_manage">Manage Genders</a>
+        <a href="/orders_manage">Manage Orders</a>
+        <a href="/orders_products_manage">Manage Orders_Products</a>
+        <a href="/products_manage">Manage Products</a>
+        <a href="/store_manage/">Manage Stores</a>
+    </div>
+    <div class="container-fluid">
+        <div class="content">
+        <h2>Update Order_Product:</h2>
+        <br>
+        <br>
+        <h3>Update: order id {{order_product.order_id}} and product id {{order_product.product_id}}</h2>
+        <form id="update-order-product" action="/orders-products/" method="post">
+            {{!-- order_id: <input type="text" class="form-control" name="order_id" value="{{order_product.order_id}}"><br>
+            product_id: <input type="text" class="form-control" name="product_id" value="{{order_product.product_id}}"><br> --}}
+            quantity: <input type="text" class="form-control" name="quantity" value="{{order_product.quantity}}"><br>
+            selling_price: <input type="text" class="form-control" name="selling_price" value="{{order_product.selling_price}}"><br>
+        </form>
+        
+        <button onclick="updateOrderProduct({{order_product.order_id}}, {{order_product.product_id}})"
+            class="btn btn-primary">Update</button>
+    </div>
+    </div>
+    
+</body>
+
 </html>
