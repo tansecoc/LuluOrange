@@ -29,15 +29,41 @@ module.exports = function(){
         });
     }
 
+    //For order dropdown
+    function getOrders(res, mysql, context, complete){
+        mysql.pool.query("SELECT order_id as order_id FROM lo_orders", function(error, results, fields){
+            if(error){
+                res.write(JSON.stringify(error));
+                res.end();
+            }
+            context.orders = results;
+            complete();
+        });
+    }
+
+    //For product dropdown
+    function getProducts(res, mysql, context, complete){
+        mysql.pool.query("SELECT product_id as product_id, product_name FROM lo_products", function(error, results, fields){
+            if(error){
+                res.write(JSON.stringify(error));
+                res.end();
+            }
+            context.products = results;
+            complete();
+        });
+    }
+
     router.get('/', function(req, res){
         var callbackCount = 0;
         var context = {};
         context.jsscripts = ["deleteorderproduct.js"];
         var mysql = req.app.get('mysql');
         getOrders_Products(res, mysql, context, complete);
+        getOrders(res, mysql, context, complete);
+        getProducts(res, mysql, context, complete);
         function complete(){
             callbackCount++;
-            if(callbackCount >= 1){
+            if(callbackCount >= 3){
                 res.render('orders_products_manage', context);
             }
 

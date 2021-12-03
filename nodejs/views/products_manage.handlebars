@@ -20,7 +20,8 @@
                 <!--- this form does not submit directly, the button handles all the interaction with backend -->
                     <label>Filter Product by Activity:</label>
                     <br>
-                    <select id='activity_filter' name="activity"> 
+                    <select id='activity_filter' name="activity">
+                        <option>select activity</option> 
                         {{#each activities}}
                         <option value="{{activity_id}}">{{activity_description}}</option>
                         {{/each}}
