@@ -1,10 +1,41 @@
 <html>
-<div class="container-fluid">
+
+<body>
+    <div class="sidebar">
+        <h2 id="sidebar_logo">LuluOrange</h2>
+        <a href="/index.html">Welcome</a>
+        <a href="/activities_manage">Manage Activities</a>
+        <a href="/customers_manage">Manage Customers</a>
+        <a href="/genders_manage">Manage Genders</a>
+        <a href="/orders_manage">Manage Orders</a>
+        <a href="/orders_products_manage">Manage Orders_Products</a>
+        <a href="/products_manage">Manage Products</a>
+        <a href="/stores_manage/">Manage Stores</a>
+    </div>
+    <div class="container-fluid">
+        <div class="content">
 <h2>Update Order ID: {{order.order_id}}</h2>
 <form id="update-order" action="/orders" method="post">
-    customer_id: <input type="text" name="customer_id" value="{{order.customer_id}}"><br>
-    store_id: <input type="text" name="store_id" value="{{order.store_id}}"><br>
-    order_date: <input type="date" name="order_date" value="{{order.order_date}}"><br>
+    customer_id: <input type="text" class="form-control" name="customer_id" value="{{order.customer_id}}"><br>
+    store_id: <input type="text" class="form-control" name="store_id" value="{{order.store_id}}"><br>
+    {{!-- Customer_id<br/>
+                        <select name="customer_id" class="form-control" required>
+                            <option>{{order.customer_id}}</option>                                
+                            {{#each customers}}
+                                <option value ="{{customer_id}}">{{customer_id}}</option>
+                            {{/each}}
+                        </select>
+                        <br>
+    store_id<br/>
+                        <select name="store_id" class="form-control" required>
+                            <option>{{order.store_id}}</option>                                
+                            {{#each stores}}
+                                <option value ="{{store_id}}">{{store_id}}</option>
+                            {{/each}}
+                        </select>
+                        <br>
+                        {{order.store_id}} {{order.order_date}} hello--}}
+    order_date: <input type="date" class="form-control" name="order_date" value=""{{order.order_date}}><br> 
 </form>
 <button onclick="updateOrder({{order.order_id}})" class="button_sub">Update</button>
 </div>
