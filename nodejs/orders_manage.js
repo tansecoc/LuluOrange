@@ -2,6 +2,7 @@ module.exports = function(){
     var express = require('express');
     var router = express.Router();
 
+    /* For displaying all orders */
     function getOrders(res, mysql, context, complete){
         mysql.pool.query("SELECT lo_orders.order_id, lo_orders.customer_id, lo_orders.store_id, lo_orders.order_date FROM lo_orders INNER JOIN lo_customers ON lo_orders.customer_id = lo_customers.customer_id", function(error, results, fields){
             if(error){
@@ -13,6 +14,7 @@ module.exports = function(){
         });
     }
 
+    /* Get an order for update */
     function getOrder(res, mysql, context, id, complete){
         var sql = "SELECT order_id, customer_id, store_id, order_date FROM lo_orders WHERE order_id = ?";
         var inserts = [id];
@@ -26,6 +28,7 @@ module.exports = function(){
         });
     }
 
+    /* For displaying all customers related to orders */
     function getCustomers(res, mysql, context, complete){
         mysql.pool.query("SELECT customer_id, customer_email FROM lo_customers", function(error, results, fields){
             if(error){
@@ -37,6 +40,7 @@ module.exports = function(){
         });
     }
 
+    /* Display all orders. */
     router.get('/', function(req, res){
         var callbackCount = 0;
         var context = {};
@@ -54,7 +58,6 @@ module.exports = function(){
     })
 
     /* Display one order for the specific purpose of updating orders */
-
     router.get('/:order_id', function(req, res){
         callbackCount = 0;
         var context = {};
@@ -70,6 +73,8 @@ module.exports = function(){
         }
     });
 
+
+    /* Add an order. */
     router.post('/', function(req, res){
         console.log(req.body.store)
         console.log(req.body)
@@ -89,7 +94,6 @@ module.exports = function(){
     });
 
     /* The URI that update data is sent to in order to update an order */
-
     router.put('/:id', function(req, res){
         var mysql = req.app.get('mysql');
         console.log(req.body)
@@ -109,7 +113,6 @@ module.exports = function(){
     });
 
     /* Route to delete a order, simply returns a 202 upon success. Ajax will handle this. */
-
     router.delete('/:id', function(req, res){
         var mysql = req.app.get('mysql');
         var sql = "DELETE FROM lo_orders WHERE order_id = ?";

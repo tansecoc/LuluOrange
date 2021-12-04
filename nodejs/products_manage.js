@@ -2,6 +2,7 @@ module.exports = function(){
     var express = require('express');
     var router = express.Router();
 
+    /* For displaying all products */
     function getProducts(res, mysql, context, complete){
         mysql.pool.query("SELECT product_id, product_name, product_description, gender_id, activity_id, product_price FROM lo_products", function(error, results, fields){
             if(error){
@@ -13,6 +14,7 @@ module.exports = function(){
         });
     }
 
+    /* Get a product for update */
     function getProduct(res, mysql, context, id, complete){
         // var sql = "SELECT character_id as id, fname, lname, homeworld, age FROM bsg_people WHERE character_id = ?";
         var sql = "SELECT product_id, product_name, product_description, gender_id, activity_id, product_price FROM lo_products WHERE product_id = ?";
@@ -27,6 +29,7 @@ module.exports = function(){
         });
     }
 
+    /* For the activities filter dropdown */
     function getActivities(res, mysql, context, complete){
         mysql.pool.query("SELECT activity_id, activity_description FROM lo_activities", function(error, results, fields){
             if(error){
@@ -38,8 +41,8 @@ module.exports = function(){
         });
     }
 
+    /* For filtering products by an activity */
     function getProductsByActivity(req, res, mysql, context, complete){
-        // var query = "SELECT bsg_people.character_id as id, fname, lname, bsg_planets.name AS homeworld, age FROM bsg_people INNER JOIN bsg_planets ON homeworld = bsg_planets.planet_id WHERE bsg_people.homeworld = ?";
         var query = "SELECT lo_products.product_id, lo_products.product_name, lo_products.product_description, lo_products.gender_id, lo_products.activity_id, lo_products.product_price from lo_products WHERE lo_products.activity_id = ?";
         console.log(req.params)
         var inserts = [req.params.product]
@@ -53,6 +56,7 @@ module.exports = function(){
           });
       }
 
+    /* Display all products. */
     router.get('/', function(req, res){
         var callbackCount = 0;
         var context = {};
@@ -129,6 +133,7 @@ module.exports = function(){
         });
     });
 
+    /* add a product */
     router.post('/', function(req, res){
         console.log(req.body)
         var mysql = req.app.get('mysql');
@@ -151,7 +156,6 @@ module.exports = function(){
     });
 
     /* Route to delete a product, simply returns a 202 upon success. Ajax will handle this. */
-
     router.delete('/:id', function(req, res){
         var mysql = req.app.get('mysql');
         var sql = "DELETE FROM lo_products WHERE product_id = ?";
