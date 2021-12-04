@@ -2,6 +2,7 @@ module.exports = function(){
     var express = require('express');
     var router = express.Router();
 
+    /* For displaying all orders */
     function getOrders_Products(res, mysql, context, complete){
         mysql.pool.query("SELECT order_id, product_id, quantity, selling_price FROM lo_orders_products", function(error, results, fields){
             if(error){
@@ -13,6 +14,7 @@ module.exports = function(){
         });
     }
 
+    /* Get order_product for update */
     function getOrder_Product(res, mysql, context, order_id, product_id, complete){
         // console.log('order_id:', order_id)
         // console.log('product_id:', product_id)
@@ -53,6 +55,7 @@ module.exports = function(){
         });
     }
 
+    /* Display all orders_products. */
     router.get('/', function(req, res){
         var callbackCount = 0;
         var context = {};
@@ -117,8 +120,9 @@ module.exports = function(){
         });
     });
 
+    
+    /* add an order_product */
     router.post('/', function(req, res){
-        // console.log(req.body.store)
         console.log(req.body)
         var mysql = req.app.get('mysql');
         var sql = "INSERT INTO lo_orders_products (order_id, product_id, quantity, selling_price) VALUES (?,?,?,?)";

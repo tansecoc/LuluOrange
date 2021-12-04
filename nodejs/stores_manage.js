@@ -2,6 +2,7 @@ module.exports = function(){
     var express = require('express');
     var router = express.Router();
 
+    /* For displaying all stores */
     function getStores(res, mysql, context, complete){
         mysql.pool.query("SELECT store_id, store_email, store_phone, store_street, store_city, store_state, store_country, store_zip FROM lo_stores", function(error, results, fields){
             if(error){
@@ -13,6 +14,7 @@ module.exports = function(){
         });
     }
 
+    /* Get a store for update */
     function getStore(res, mysql, context, id, complete){
         // var sql = "SELECT character_id as id, fname, lname, homeworld, age FROM bsg_people WHERE character_id = ?";
         var sql = "SELECT store_id, store_email, store_phone, store_street, store_city, store_state, store_country, store_zip FROM lo_stores WHERE store_id = ?";
@@ -27,6 +29,7 @@ module.exports = function(){
         });
     }
 
+    /* Display all stores. */
     router.get('/', function(req, res){
         var callbackCount = 0;
         var context = {};
@@ -43,7 +46,6 @@ module.exports = function(){
     })
 
     /* Display one store for the specific purpose of updating stores */
-
     router.get('/:store_id', function(req, res){
         callbackCount = 0;
         var context = {};
@@ -60,7 +62,6 @@ module.exports = function(){
     });
 
     /* The URI that update data is sent to in order to update a store */
-
     router.put('/:id', function(req, res){
         var mysql = req.app.get('mysql');
         console.log(req.body)
