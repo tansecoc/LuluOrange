@@ -18,23 +18,6 @@
 <form id="update-order" action="/orders" method="post">
     customer_id: <input type="text" class="form-control" name="customer_id" value="{{order.customer_id}}"><br>
     store_id: <input type="text" class="form-control" name="store_id" value="{{order.store_id}}"><br>
-    {{!-- Customer_id<br/>
-                        <select name="customer_id" class="form-control" required>
-                            <option>{{order.customer_id}}</option>                                
-                            {{#each customers}}
-                                <option value ="{{customer_id}}">{{customer_id}}</option>
-                            {{/each}}
-                        </select>
-                        <br>
-    store_id<br/>
-                        <select name="store_id" class="form-control" required>
-                            <option>{{order.store_id}}</option>                                
-                            {{#each stores}}
-                                <option value ="{{store_id}}">{{store_id}}</option>
-                            {{/each}}
-                        </select>
-                        <br>
-                        {{order.store_id}} {{order.order_date}} hello--}}
     order_date: <input type="date" class="form-control" name="order_date" value=""{{order.order_date}}><br> 
 </form>
 <button onclick="updateOrder({{order.order_id}})" class="button_sub">Update</button>
