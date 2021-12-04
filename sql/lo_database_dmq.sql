@@ -126,7 +126,7 @@ UPDATE lo_stores SET
 -- Queries for the Orders page
 --------------------------------------------------------------
 -- get all fields from lo_stores to populate into the Orders List
-SELECT order_id, customer_id, store_id, order_date FROM `lo_orders`;
+SELECT order_id, customer_id, store_id, order_date FROM lo_orders;
 
 -- add a new order
 INSERT INTO lo_orders (customer_id, store_id, order_date) VALUES (:customer_id_Input, :store_id_Input, :order_date_Input)
@@ -151,7 +151,7 @@ WHERE order_id= :order_id_from_the_edit_form
 -- Queries for the Orders_Products page
 --------------------------------------------------------------
 -- get all fields from lo_orders_products to populate into the orders_products List
-SELECT order_id, product_id, quantity, selling_price FROM `lo_orders_products`;
+SELECT order_id, product_id, quantity, selling_price FROM lo_orders_products;
 
 -- add a new order
 INSERT INTO lo_orders_products (order_id, product_id, quantity, selling_price) 
