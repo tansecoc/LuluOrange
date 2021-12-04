@@ -91,7 +91,7 @@ CREATE TABLE `lo_products` (
   `product_id` int NOT NULL AUTO_INCREMENT,
   `product_name` varchar(255) NOT NULL,
   `product_description` varchar(255),
-  `gender_id` int,
+  `gender_id` int NULL,
   `activity_id` int,
   `product_price` decimal(6,2) NOT NULL,
   PRIMARY KEY (`product_id`),
