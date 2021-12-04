@@ -37,6 +37,8 @@ module.exports = function(){
         });
     }
 
+    /* Display all orders. */
+
     router.get('/', function(req, res){
         var callbackCount = 0;
         var context = {};
@@ -69,6 +71,9 @@ module.exports = function(){
 
         }
     });
+
+
+    /* Add an order. */
 
     router.post('/', function(req, res){
         console.log(req.body.store)
