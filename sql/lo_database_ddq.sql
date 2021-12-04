@@ -16,6 +16,17 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
+-- Drop all lo_ tables
+--
+DROP TABLE IF EXISTS `lo_orders_products`;
+DROP TABLE IF EXISTS `lo_orders`;
+DROP TABLE IF EXISTS `lo_products`;
+DROP TABLE IF EXISTS `lo_customers`;
+DROP TABLE IF EXISTS `lo_genders`;
+DROP TABLE IF EXISTS `lo_activities`;
+DROP TABLE IF EXISTS `lo_orders`;
+
+--
 -- Table structure for table `lo_customers`
 --
 
