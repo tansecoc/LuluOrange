@@ -108,9 +108,15 @@ module.exports = function(){
     router.put('/:id', function(req, res){
         var mysql = req.app.get('mysql');
         console.log(req.body)
-        console.log(req.params.id)
-        var sql = "UPDATE lo_products SET product_name=?, product_description=?, gender_id=?, activity_id=?, product_price=? WHERE product_id=?";
-        var inserts = [req.body.product_name, req.body.product_description, req.body.gender_id, req.body.activity_id, req.body.product_price, req.params.id];
+        // console.log(req.params.id)
+        if (req.body.gender_id === '') {
+            // var sql = "INSERT INTO lo_products (product_name, product_description, gender_id, activity_id, product_price) VALUES (?,?,null,?,?)";
+            var sql = "UPDATE lo_products SET product_name=?, product_description=?, gender_id=null, activity_id=?, product_price=? WHERE product_id=?";
+            var inserts = [req.body.product_name, req.body.product_description, req.body.activity_id, req.body.product_price, req.params.id];
+        } else{
+            var sql = "UPDATE lo_products SET product_name=?, product_description=?, gender_id=?, activity_id=?, product_price=? WHERE product_id=?";
+            var inserts = [req.body.product_name, req.body.product_description, req.body.gender_id, req.body.activity_id, req.body.product_price, req.params.id];
+        }
         sql = mysql.pool.query(sql,inserts,function(error, results, fields){
             if(error){
                 console.log(error)
@@ -124,12 +130,15 @@ module.exports = function(){
     });
 
     router.post('/', function(req, res){
-        // console.log(req.body.product)
         console.log(req.body)
         var mysql = req.app.get('mysql');
-        var sql = "INSERT INTO lo_products (product_name, product_description, gender_id, activity_id, product_price) VALUES (?,?,?,?,?)";
-        var inserts = [req.body.product_name, req.body.product_description, req.body.gender_id, req.body.activity_id, req.body.product_price];
-
+        if (req.body.gender_id === '') {
+            var sql = "INSERT INTO lo_products (product_name, product_description, gender_id, activity_id, product_price) VALUES (?,?,null,?,?)";
+            var inserts = [req.body.product_name, req.body.product_description, req.body.activity_id, req.body.product_price];
+        } else{
+            var sql = "INSERT INTO lo_products (product_name, product_description, gender_id, activity_id, product_price) VALUES (?,?,?,?,?)";
+            var inserts = [req.body.product_name, req.body.product_description, req.body.gender_id, req.body.activity_id, req.body.product_price];
+        }
         sql = mysql.pool.query(sql,inserts,function(error, results, fields){
             if(error){
                 console.log(JSON.stringify(error))
